@@ -20,7 +20,7 @@ Plugin 'preservim/nerdtree'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-autocmd vimenter * :AirlineTheme tenderplus
+"autocmd vimenter * :AirlineTheme tenderplus
 
 Plugin 'davidhalter/jedi-vim'
 Bundle 'Raimondi/delimitMate'
@@ -29,7 +29,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-sensible'
 " Themes
 
-Plugin 'jacoborus/tender.vim'
+"Plugin 'jacoborus/tender.vim'
+Bundle 'srcery-colors/srcery-vim'
 "Bundle 'tomasr/molokai'
 
 " All of your Plugins must be added before the following line
@@ -40,9 +41,11 @@ filetype plugin indent on    " required
 "
 " Brief help
 " :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginInstall    - installs plugins; append `!` to update or just
+":PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+"auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
@@ -78,6 +81,6 @@ let g:delimitMate_expand_cr = 2
 ""    \ }
 
 syntax on
-colorscheme tender
+colorscheme srcery
 
 hi MatchParen ctermfg=208 ctermbg=bg
