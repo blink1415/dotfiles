@@ -1,28 +1,23 @@
-" Vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
+" Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
 Bundle 'https://github.com/chrisbra/Colorizer'
-"Bundle 'itchyny/lightline.vim'
 Bundle 'frazrepo/vim-rainbow'
-Plugin 'fatih/vim-go'
 
+"Plugin 'fatih/vim-go'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'preservim/nerdtree'
-
+Plugin 'rust-lang/rust.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 "autocmd vimenter * :AirlineTheme tenderplus
 
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 Bundle 'Raimondi/delimitMate'
 "Bundle 'ycm-core/YouCompleteMe'
 Bundle 'tpope/vim-surround'
@@ -33,54 +28,45 @@ Bundle 'tpope/vim-sensible'
 Bundle 'srcery-colors/srcery-vim'
 "Bundle 'tomasr/molokai'
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-":PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-"auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-"""""""""""""""""""
-"filetype plugin indent on
-" show existing tab with 4 spaces width
+
 set tabstop=4
-" when indenting with '>', use 4 spaces width
 set shiftwidth=4
-" On pressing tab, insert 4 spaces
 set expandtab
 
-
-" set spelllang = en_gb, nb_NO, nn_NO
 set spell
-set relativenumber
 
+"set relativenumber
+set number
+
+" Nerdtree
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd vimenter * :ColorHighlight
+
 "autocmd vimenter * NERDTree
 
-autocmd BufWinEnter *.py nnoremap <F3> :w<CR>:!python3 %:p<CR>
-autocmd BufWinEnter *.go nnoremap <F3> :w<CR>:GoRun<CR>
-
 let g:delimitMate_expand_cr = 2
-"
-"Color scheme and correct parentesis highlights
 
-"let g:lightline = {
-""    \ 'colorscheme': 'wombat',
-""    \ }
-
+" Color scheme
 syntax on
 colorscheme srcery
 
+" Parenthesis fix
 hi MatchParen ctermfg=208 ctermbg=bg
+
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Rust
+let g:rustfmt_autosave = 1
