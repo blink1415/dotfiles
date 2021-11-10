@@ -1,0 +1,198 @@
+# This is an example nethackrc file for NetHack 3.6.x - You should edit
+# this file to meet your play style needs.
+
+# Available editors: rnano or virus via the terminal, or see our web-based RC Editor
+# at https://www.hardfought.org/nethack/rcedit
+
+# Examples of common defaults:
+
+OPTIONS=name:blink
+#OPTIONS=windowtype:tty
+OPTIONS=showexp,showscore,time,color
+OPTIONS=autodig,fruit:slime mold,boulder:0
+
+# statushitlites is a popular option for 3.6.1 - some common settings:
+
+OPTIONS=statushilites:20
+
+# Title
+OPTIONS=hilite_status:title/changed/white
+OPTIONS=hilite_status:alignment/changed/white
+
+# HP
+OPTIONS=hitpointbar
+OPTIONS=hilite_status:hitpoints/100%/grey
+OPTIONS=hilite_status:hitpoints/<100%/green
+OPTIONS=hilite_status:hitpoints/<50%/yellow
+OPTIONS=hilite_status:hitpoints/<33%/red&bold
+OPTIONS=hilite_status:hitpoints/<15%/red
+
+# Mana
+OPTIONS=hilite_status:power/100%/grey
+OPTIONS=hilite_status:power/<100%/cyan
+OPTIONS=hilite_status:power/<50%/magenta
+OPTIONS=hilite_status:power/<25%/red
+
+# Experience level
+OPTIONS=hilite_status:experience/down/red&bold
+OPTIONS=hilite_status:experience-level/up/cyan&bold/down/red&bold
+
+# Encumberance
+OPTIONS=hilite_status:cap/burdened/yellow/stressed/orange/strained/red/overtaxed/red/overloaded/red
+
+# Hunger
+OPTIONS=hilite_status:hunger/satiated/cyan&bold/hungry/yellow/weak/orange/fainting/red&inverse/fainted/red
+
+# Troubles
+OPTIONS=hilite_status:condition/hallu/yellow
+OPTIONS=hilite_status:condition/conf/magenta
+OPTIONS=hilite_status:condition/stun/red&bold
+OPTIONS=hilite_status:condition/major_troubles/red&inverse
+
+# Attributes
+OPTIONS=hilite_status:armor-class/down/green&bold/up/red&bold
+OPTIONS=hilite_status:characteristics/up/green&bold/down/red&bold
+OPTIONS=hilite_status:hitpoints-max/up/green&bold/down/red&bold
+OPTIONS=hilite_status:power-max/up/green&bold/down/red&bold
+
+# Gold
+OPTIONS=hilite_status: gold/up/yellow/down/brown
+
+# Delayed instadeaths
+MSGTYPE=stop ".* swings itself around you!"
+MSGTYPE=stop "The python grabs you!"
+MSGTYPE=stop "You don't feel very well."
+MSGTYPE=stop "You are turning a little green."
+MSGTYPE=stop "Your limbs are getting oozy."
+MSGTYPE=stop "Your skin begins to peel away."
+MSGTYPE=stop "You are turning into a green slime."
+MSGTYPE=stop "You are slowing down."
+MSGTYPE=stop "Your limbs are stiffening."
+MSGTYPE=stop "It constricts your throat!"
+MSGTYPE=stop "You find it hard to breathe."
+MSGTYPE=stop "You're gasping for air."
+MSGTYPE=stop "Your blood is having trouble reaching your brain."
+MSGTYPE=stop "You can no longer breathe."
+MSGTYPE=stop "You're turning blue."
+MSGTYPE=stop "Your consciousness is fading."
+MSGTYPE=stop "You feel deathly sick."
+MSGTYPE=stop "You feel much worse."
+MSGTYPE=stop "You feel even worse."
+
+# Things that aren't dangerous by themselves but could kill you if you don't notice
+MSGTYPE=stop "You feel feverish."
+MSGTYPE=stop "You fail to cast the spell correctly."
+MSGTYPE=stop "You don't have enough energy to cast that spell."
+MSGTYPE=stop "You are beginning to feel weak."
+MSGTYPE=stop ".* needs food, badly!"
+MSGTYPE=stop "You hear the howling of the CwnAnnwn..."
+MSGTYPE=stop ".*, your life force is running out."
+MSGTYPE=stop ".*, all of your powers will be lost..."
+MSGTYPE=stop "You hear the wailing of the Banshee..."
+MSGTYPE=stop ".* is about to die."
+MSGTYPE=stop "trice corpse rots away."
+
+# Skills
+MSGTYPE=stop "You feel more confident in your weapon skills."
+MSGTYPE=stop "You feel more confident in your fighting skills."
+MSGTYPE=stop "You feel more confident in your spell casting skills."
+
+
+
+# Curses UI is available on this build. Example settings (uncomment OPTIONS=windowtype:curses to enable)
+# All Curses UI settings are commented out
+
+##################
+# Curses Settings
+##################
+# default values in parentheses
+
+# Enable curses windowport (false)
+OPTIONS=windowtype:curses  
+
+# Enable two ro three statuslines at the bottom
+#OPTIONS=statuslines:2
+
+# Window borders (3)
+# 1 - always draw borders
+# 2 - never draw borders
+# 3 - draw borders if terminal is big enough
+OPTIONS=windowborders:2
+
+# Set terminal window for same dimensions
+# Adjust these variables to your liking
+#OPTIONS=term_cols:176
+#OPTIONS=term_rows:45
+
+# Attributes for pet highlighting (???)
+# [i]talics (or is it inverse?)
+# [u]nderline
+# [b]old
+# possibly others
+OPTIONS=petattr:i
+
+# use colour in non-map areas (true)
+OPTIONS=guicolor
+
+# Display inventory window permanently on right of screen (false)
+OPTIONS=perm_invent
+
+# Window alignment (msg:top, status:bottom)
+# note: align_status:left/right displays a more verbose window, arranged vertically
+# this is only partially implemented in 3.6.1 and is buggy
+# it will be fixed soon
+OPTIONS=align_message:top
+OPTIONS=align_status:bottom
+
+# Settings not specific to curses that you will want to use.
+OPTIONS=menucolors
+
+# BUC colors
+MENUCOLOR=" blessed "=cyan
+MENUCOLOR=" holy "=cyan
+MENUCOLOR=" uncursed "=green
+MENUCOLOR=" cursed "=red
+MENUCOLOR=" unholy "=red
+MENUCOLOR=" cursed .* (being worn)"=orange&underline
+
+# Special items
+menucolor="amulet of yendor named"=magenta
+menucolor="gold piece"=yellow
+menucolor="loadstone\1wand \(of\|called\) cancellation"=gray&underline
+
+# End of Curses settings
+##################
+
+# For more information on what you can set in your nethackrc file, refer to:
+# https://nethackwiki.com/wiki/Options
+# Happy hacking!
+
+# Custom stuff
+
+OPTIONS=hilite_pet
+OPTIONS=autopickup, pickup_types:$!/="?
+#OPTIONS=lootabc:0
+
+#OPTIONS=paranoid_hit
+OPTIONS=sortloot:full
+#OPTIONS=hilite_hidden_stairs
+#OPTIONS=hilite_obj_piles
+# MONSTERCOLOR=floating eye:lightgreen
+
+
+#   autopickup_exception="*magic marker*"
+#   autopickup_exception="*magic lamp*"
+#   autopickup_exception="*lamp called magic"
+#   autopickup_exception="*silver bell*"
+#   autopickup_exception="*Bell of Opening*"
+#   autopickup_exception="*candelabrum*"
+#   autopickup_exception="*Candelabrum*"
+#   autopickup_exception="*Book of the Dead*"
+#   autopickup_exception="*papyrus spellboop*"
+
+
+OPTIONS=font_size_map:14
+OPTIONS=font_size_menu:10
+OPTIONS=font_size_message:10
+OPTIONS=font_size_status:10
+OPTIONS=font_size_text:10
