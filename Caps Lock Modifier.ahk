@@ -23,6 +23,9 @@
   CapsLock & t::
   Run "C:\Program Files\Alacritty\alacritty.exe"
   return
+  CapsLock & e::
+  Run "C:\windows\explorer.exe"
+  return
 
   ; Scroll lock
   Scrolllock::^!l
