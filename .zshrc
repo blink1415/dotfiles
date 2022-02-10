@@ -1,8 +1,5 @@
 #-------------Source-----------------
 
-# znap
-source ~/.zsh/znap/zsh-snap/znap.zsh
-
 # Cargo/Rust
 source $HOME/.cargo/env
 
@@ -10,11 +7,11 @@ source $HOME/.cargo/env
 fpath+=$HOME/.zsh/pure
 
 #-------------Install znap------------
-[[ -f ~/Git/zsh-snap/znap.zsh ]] ||
+[[ -f ~/.zsh/zsh-snap/znap.zsh ]] ||
 git clone --depth 1 -- \
-https://github.com/marlonrichert/zsh-snap.git ~/Git/zsh-snap
+https://github.com/marlonrichert/zsh-snap.git ~/.zsh/zsh-snap
 
-source ~/Git/zsh-snap/znap.zsh  # Start Znap
+source ~/.zsh/zsh-snap/znap.zsh  # Start Znap
 znap prompt sindresorhus/pure
 
 #-------------Plugins---------------
