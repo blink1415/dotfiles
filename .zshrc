@@ -33,6 +33,9 @@ prompt pure
 # Auto start tmux
 if [ "$TMUX" = "" ]; then tmux; fi
 
+# Vim keybinds
+bindkey -v
+
 #-------------History-----------------
 
 setopt histignorealldups sharehistory
