@@ -71,5 +71,6 @@ HISTFILE=~/.zsh_history
 alias ls="lsd"
 alias ll="lsd -l"
 alias la="lsd -la"
+alias config="cd ~/.config/dotfiles"
 
 #-------------------------------------
