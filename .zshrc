@@ -68,9 +68,15 @@ HISTFILE=~/.zsh_history
 
 #-------------Aliases-----------------
 
+# Directories
+alias config="cd ~/.config/dotfiles"
+
+# Commands
 alias ls="lsd"
 alias ll="lsd -l"
 alias la="lsd -la"
-alias config="cd ~/.config/dotfiles"
+
+alias g="git"
+alias v="vim"
 
 #-------------------------------------

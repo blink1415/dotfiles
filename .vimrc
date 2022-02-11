@@ -22,6 +22,7 @@ Bundle 'Raimondi/delimitMate'
 "Bundle 'ycm-core/YouCompleteMe'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-sensible'
+Bundle 'ctrlpvim/ctrlp.vim'
 " Themes
 
 "Plugin 'jacoborus/tender.vim'
@@ -46,6 +47,8 @@ map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd vimenter * :ColorHighlight
 
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 "autocmd vimenter * NERDTree
 
 let g:delimitMate_expand_cr = 2
