@@ -26,7 +26,11 @@
   CapsLock & e::
   Run "C:\windows\explorer.exe"
   return
+  CapsLock & d::
+  SendInput {]}{d}
+  return
 
   ; Scroll lock
   Scrolllock::^!l
+
 
