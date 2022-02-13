@@ -21,7 +21,10 @@
   SendInput {Ctrl down}{a}{Ctrl up}
   return
   CapsLock & t::
-  Run "C:\Program Files\Alacritty\alacritty.exe"
+  Run "C:\Users\nikol\Desktop\wsl_home"
+  return
+  CapsLock & p::
+  Run "C:\Users\nikol\Desktop\pshell"
   return
   CapsLock & e::
   Run "C:\windows\explorer.exe"
