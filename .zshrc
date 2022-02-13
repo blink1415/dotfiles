@@ -77,6 +77,6 @@ alias ll="lsd -l"
 alias la="lsd -la"
 
 alias g="git"
-alias v="neovim"
+alias v="nvim"
 
 #-------------------------------------
