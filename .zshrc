@@ -79,4 +79,5 @@ alias la="lsd -la"
 alias g="git"
 alias v="nvim"
 
-#-------------------------------------
+#-------------SSH agent---------------
+alias sshadd="eval \"$(ssh-agent)\" && ssh-add"
