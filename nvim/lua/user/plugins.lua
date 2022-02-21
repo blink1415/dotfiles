@@ -64,6 +64,7 @@ return packer.startup(function(use)
     -- General functionality
     use("dstein64/nvim-scrollview") -- Scrollbar
     use("norcalli/nvim-colorizer.lua") -- Colorizer
+    use("tpope/vim-surround") -- Surround
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
