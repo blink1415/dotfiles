@@ -77,6 +77,7 @@ alias ll="lsd -l"
 alias la="lsd -la"
 
 alias g="git"
+alias gb="git checkout -b"
 alias v="nvim"
 
 #-------------SSH agent---------------
