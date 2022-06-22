@@ -1,8 +1,8 @@
 local wezterm = require 'wezterm';
 return {
     -- Shell
-    default_prog = {"wsl.exe"},
-    default_cwd = "\\\\wsl$\\Ubuntu\\home\\nsk",
+    -- default_prog = {"wsl.exe"},
+    -- default_cwd = "\\\\wsl$\\Ubuntu\\home\\nsk",
 
     -- Tab/Window
     hide_tab_bar_if_only_one_tab = true,
@@ -16,7 +16,7 @@ return {
     -- Appearance
     color_scheme = "Kanagawa",
 
-    font = wezterm.font("CaskaydiaCove NF"),
+    -- font = wezterm.font("CaskaydiaCove NF"),
 
     force_reverse_video_cursor = true,
     color_schemes = {
