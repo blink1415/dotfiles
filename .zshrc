@@ -79,6 +79,7 @@ alias la="lsd -la"
 alias g="git"
 alias gb="git checkout -b"
 alias v="nvim"
+alias e="emacs"
 
 #-------------SSH agent---------------
 [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"
