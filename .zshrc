@@ -78,6 +78,7 @@ alias la="lsd -la"
 
 alias g="git"
 alias gb="git checkout -b"
+alias gch="git checkout"
 alias v="nvim"
 alias e="emacs"
 
