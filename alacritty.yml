@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 5
-    y: 5
+    x: 0
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -118,7 +118,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: CaskaydiaCove NF
+    #family: Caskaydia Cove
+    family: CaskaydiaCove Nerd Font Mono
 
     style: Regular
 
@@ -170,54 +171,87 @@ font:
     # color will be used.
     #dim_foreground: '#828482'
     #bright_foreground: '#eaeaea'
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x2c2c2c'
+#     foreground: '0xd6d6d6'
+#
+#     dim_foreground:    '0xdbdbdb'
+#     bright_foreground: '0xd9d9d9'
+#     dim_background:    '0x202020' # not sure
+#     bright_background: '0x3a3a3a' # not sure
+#
+#   # Cursor colors
+#   cursor:
+#     text:   '0x2c2c2c'
+#     cursor: '0xd9d9d9'
+#
+#   # Normal colors
+#   normal:
+#     black:   '0x1c1c1c'
+#     red:     '0xbc5653'
+#     green:   '0x909d63'
+#     yellow:  '0xebc17a'
+#     blue:    '0x7eaac7'
+#     magenta: '0xaa6292'
+#     cyan:    '0x86d3ce'
+#     white:   '0xcacaca'
+#
+#   # Bright colors
+#   bright:
+#     black:   '0x636363'
+#     red:     '0xbc5653'
+#     green:   '0x909d63'
+#     yellow:  '0xebc17a'
+#     blue:    '0x7eaac7'
+#     magenta: '0xaa6292'
+#     cyan:    '0x86d3ce'
+#     white:   '0xf7f7f7'
+#
+#   # Dim colors
+#   dim:
+#     black:   '0x232323'
+#     red:     '0x74423f'
+#     green:   '0x5e6547'
+#     yellow:  '0x8b7653'
+#     blue:    '0x556b79'
+#     magenta: '0x6e4962'
+#     cyan:    '0x5c8482'
+#     white:   '0x828282'
+# Kanagawa Alacritty Colors
 colors:
-  # Default colors
   primary:
-    background: '0x2c2c2c'
-    foreground: '0xd6d6d6'
+    background: '0x1f1f28'
+    foreground: '0xdcd7ba'
 
-    dim_foreground:    '0xdbdbdb'
-    bright_foreground: '0xd9d9d9'
-    dim_background:    '0x202020' # not sure
-    bright_background: '0x3a3a3a' # not sure
-
-  # Cursor colors
-  cursor:
-    text:   '0x2c2c2c'
-    cursor: '0xd9d9d9'
-
-  # Normal colors
   normal:
-    black:   '0x1c1c1c'
-    red:     '0xbc5653'
-    green:   '0x909d63'
-    yellow:  '0xebc17a'
-    blue:    '0x7eaac7'
-    magenta: '0xaa6292'
-    cyan:    '0x86d3ce'
-    white:   '0xcacaca'
+    black:   '0x090618'
+    red:     '0xc34043'
+    green:   '0x76946a'
+    yellow:  '0xc0a36e'
+    blue:    '0x7e9cd8'
+    magenta: '0x957fb8'
+    cyan:    '0x6a9589'
+    white:   '0xc8c093'
 
-  # Bright colors
   bright:
-    black:   '0x636363'
-    red:     '0xbc5653'
-    green:   '0x909d63'
-    yellow:  '0xebc17a'
-    blue:    '0x7eaac7'
-    magenta: '0xaa6292'
-    cyan:    '0x86d3ce'
-    white:   '0xf7f7f7'
+    black:   '0x727169'
+    red:     '0xe82424'
+    green:   '0x98bb6c'
+    yellow:  '0xe6c384'
+    blue:    '0x7fb4ca'
+    magenta: '0x938aa9'
+    cyan:    '0x7aa89f'
+    white:   '0xdcd7ba'
 
-  # Dim colors
-  dim:
-    black:   '0x232323'
-    red:     '0x74423f'
-    green:   '0x5e6547'
-    yellow:  '0x8b7653'
-    blue:    '0x556b79'
-    magenta: '0x6e4962'
-    cyan:    '0x5c8482'
-    white:   '0x828282'
+  selection:
+    background: '0x2d4f67'
+    foreground: '0xc8c093'
+
+  indexed_colors:
+    - { index: 16, color: '0xffa066' }
+    - { index: 17, color: '0xff5d62' }
   # Cursor colors
   #
   # Colors which should be used to draw the terminal cursor.
@@ -447,10 +481,6 @@ live_config_reload: true
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-shell:
-  program: "C:\\Windows\\System32\\wsl.exe"
-  args:
-    - "~"
 
 # Startup directory
 #
