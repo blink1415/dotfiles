@@ -1,21 +1,22 @@
 local config = {
+  header = {},
 
   updater = {
-    remote = "origin", -- remote to use
-    channel = "nightly", -- "stable" or "nightly"
-    version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 STABLE ONLY
-    branch = "main", -- branch name (NIGHTLY ONLY)
-    commit = nil, -- commit hash (NIGHTLY ONLY)
-    pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-    skip_prompts = false, -- skip prompts about breaking changes
-    show_changelog = true, -- show the changelog after performing an update
-    auto_reload = false, -- automatically reload and sync packer after a successful update
-    auto_quit = false, -- automatically quit the current session after a successful update
+    remote = "origin",
+    channel = "nightly",
+    version = "latest",
+    branch = "main",
+    commit = nil,
+    pin_plugins = nil,
+    skip_prompts = false,
+    show_changelog = true,
+    auto_reload = false,
+    auto_quit = false,
   },
   colorscheme = "kanagawa",
 
   highlights = {
-    default_theme = function(highlights) -- or a function that returns a new table of colors to set
+    default_theme = function(highlights)
       local C = require "default_theme.colors"
       highlights.Normal = { fg = C.fg, bg = C.bg }
       return highlights
@@ -25,14 +26,14 @@ local config = {
   -- vim options
   options = {
     opt = {
-      relativenumber = false, -- sets vim.opt.relativenumber
+      relativenumber = false,
       foldcolumn = 'auto',
       foldlevel = 99,
       foldlevelstart = 99,
       foldenable = true,
     },
     g = {
-      mapleader = " ", -- sets vim.g.mapleader
+      mapleader = " ",
     },
   },
   default_theme = {
@@ -52,7 +53,7 @@ local config = {
       lightspeed = false,
       ["neo-tree"] = true,
       notify = true,
-      ["nvim-tree"] = false,
+      ["nvim-tree"] = true,
       ["nvim-web-devicons"] = true,
       rainbow = true,
       symbols_outline = false,
@@ -73,47 +74,35 @@ local config = {
     },
   },
 
-  -- Mapping data with "desc" stored directly by vim.keymap.set().
-  --
-  -- Please use this mappings table to set keyboard mapping since this is the
-  -- lower level configuration and more robust one. (which-key will
-  -- automatically pick-up stored data by this setting.)
   mappings = {
-    -- first key is the mode
     n = {
-      -- second key is the lefthand side of the map
-      -- mappings seen under group name "Buffer"
+      -- Disable keybinds
+      ["<leader>tf"] = false,
+      ["<leader>th"] = false,
+      ["<leader>tl"] = false,
+      ["<leader>tn"] = false,
+      ["<leader>tp"] = false,
+      ["<leader>tt"] = false,
+      ["<leader>tu"] = false,
+      ["<leader>tv"] = false,
+
+      -- Set keybinds
       ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
       ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-      ["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "Open project" },
-      -- ["<C-+>"] = { "<cmd>ToggleTerm<cr>" },
-      -- quick save
-      -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+      ["<leader>r"] = { "<cmd>Telescope projects<cr>", desc = "Open project" },
+      ["<leader>t"] = { "<cmd> ToggleTerm<cr>" },
     },
     t = {
-      -- setting a mapping to false will disable it
-      -- ["<esc>"] = false,
-    },
+      ["<esc>"] = false,
+      ["<esc><esc>"] = { "<cmd> ToggleTerm<cr>" },
+    }
   },
 
   -- Configure plugins
   plugins = {
     init = {
-      -- You can disable default plugins as follows:
-      -- ["goolord/alpha-nvim"] = { disable = true },
-
-      -- You can also add new plugins here as well:
-      -- Add plugins, the packer syntax without the "use"
-      -- { "andweeb/presence.nvim" },
-      -- {
-      --   "ray-x/lsp_signature.nvim",
-      --   event = "BufRead",
-      --   config = function()
-      --     require("lsp_signature").setup()
-      --   end,
-      -- },
 
       { "rebelot/kanagawa.nvim" ,
         config = function()
@@ -127,16 +116,17 @@ local config = {
               variablebuiltinStyle = { italic = true},
               specialReturn = true,       -- special highlight for the return keyword
               specialException = true,    -- special highlight for exception handling keywords
-              transparent = false,        -- do not set background color
+              transparent = true,        -- do not set background color
               dimInactive = false,        -- dim inactive window `:h hl-NormalNC`
               globalStatus = true,       -- adjust window separators highlight for laststatus=3
               terminalColors = true,      -- define vim.g.terminal_color_{0,17}
               colors = {},
               overrides = {},
-              theme = "default"           -- Load "default" theme or the experimental "light" theme
+              theme = "light"           -- Load "default" theme or the experimental "light" theme
           })
         end,
       },
+
       { "ray-x/go.nvim", 
         config = function()
           require('go').setup({
@@ -234,17 +224,13 @@ local config = {
         "kevinhwang91/nvim-ufo",
         requires = 'kevinhwang91/promise-async',
         config = function()
-          require("ufo").setup({
-
-          })
+          require("ufo").setup()
         end,
       },
       {
         "kylechui/nvim-surround",
         config = function()
-          require("nvim-surround").setup({
-
-          })
+          require("nvim-surround").setup()
         end,
       },
       {
@@ -254,12 +240,7 @@ local config = {
             detection_methods = { "lsp", "pattern" },
             patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
             ignore_lsp = {},
-
-            -- Don't calculate root dir on specific directories
-            -- Ex: { "~/.cargo/*", ... }
             exclude_dirs = {},
-
-            -- Show hidden files in telescope
             show_hidden = true,
             silent_chdir = true,
             scope_chdir = 'global',
@@ -267,18 +248,18 @@ local config = {
           })
         end,
       },
+      { "leoluz/nvim-dap-go",
+        config = function()
+          require("dap-go").setup()
+        end,
+      },
+
+      -- DAP for debugging
       { "ray-x/guihua.lua" },
       { "mfussenegger/nvim-dap" },
       { "rcarriga/nvim-dap-ui" },
       { "theHamsta/nvim-dap-virtual-text" },
-      -- { "leoluz/nvim-dap-go" },
-      -- We also support a key value style plugin definition similar to NvChad:
-      -- ["ray-x/lsp_signature.nvim"] = {
-      --   event = "BufRead",
-      --   config = function()
-      --     require("lsp_signature").setup()
-      --   end,
-      -- },
+
     },
     -- All other entries override the require("<key>").setup({...}) call for default plugins
     ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
@@ -352,11 +333,11 @@ local config = {
       current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "eol",
-        delay = 1000,
+        delay = 50,
         ignore_whitespace = false,
       },
       current_line_blame_formatter_opts = {
-        relative_time = false,
+        relative_time = true,
       },
       sign_priority = 6,
       update_debounce = 100,
@@ -421,13 +402,10 @@ local config = {
       mappings = {
         ["<2-LeftMouse>"] = "open",
         ["<cr>"] = "open",
-        ["o"] = "open",
         ["l"] = "open",
         ["S"] = "open_split",
         ["s"] = "open_vsplit",
-        ["C"] = "close_node",
         ["h"] = "close_node",
-        ["<bs>"] = "navigate_up",
         ["."] = "set_root",
         ["H"] = "toggle_hidden",
         ["R"] = "refresh",
@@ -507,7 +485,7 @@ local config = {
 
   toggleterm = {
     size = 10,
-    open_mapping = [[<C-t><C-t>]],
+    open_mapping = [[<c-x>]],
     hide_numbers = true,
     shade_filetypes = {},
     shade_terminals = true,
@@ -527,24 +505,20 @@ local config = {
       },
     },
   },
+  -- telescope = {
+  --   extensions = {
+  --     "projects"
+  --   }
+  -- }
   },
 
-  -- LuaSnip Options
   luasnip = {
-    -- Add paths for including more VS Code style snippets in luasnip
     vscode_snippet_paths = {},
-    -- Extend filetypes
     filetype_extend = {
       javascript = { "javascriptreact" },
     },
   },
 
-  -- CMP Source Priorities
-  -- modify here the priorities of default cmp sources
-  -- higher value == higher priority
-  -- The value can also be set to a boolean for disabling default sources:
-  -- false == disabled
-  -- true == 1000
   cmp = {
     source_priority = {
       nvim_lsp = 1000,
@@ -554,16 +528,10 @@ local config = {
     },
   },
 
-  -- Modify which-key registration (Use this with mappings table in the above.)
   ["which-key"] = {
-    -- Add bindings which show up as group name
     register_mappings = {
-      -- first key is the mode, n == normal mode
       n = {
-        -- second key is the prefix, <leader> prefixes
         ["<leader>"] = {
-          -- third key is the key to bring up next level and its displayed
-          -- group name in which-key top level menu
           ["b"] = { name = "Buffer" },
           ["D"] = { name = "Buffer" },
         },
@@ -571,12 +539,7 @@ local config = {
     },
   },
 
-  -- This function is run last and is a good place to configuring
-  -- augroups/autocommands and custom filetypes also this just pure lua so
-  -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-    -- Set key binding
-    -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePost", {
       desc = "Sync packer after modifying plugins.lua",
@@ -585,18 +548,6 @@ local config = {
       command = "source <afile> | PackerSync",
     })
 
-    -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
   end,
 }
 require('telescope').load_extension('projects')
