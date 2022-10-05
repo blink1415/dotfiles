@@ -1,3 +1,7 @@
+cd ~/.config/dotfiles
+
+./scripts/install/nvim.sh
+
 sudo apt install zsh;
 sudo apt install tmux;
 cp ./reference_files/ $HOME/;
@@ -18,3 +22,4 @@ nvim
 
 git clone https://github.com/AstroNvim/AstroNvim.git ./nvim-astro
 ln -s ./nvim-astro ~/.config/nvim
+
