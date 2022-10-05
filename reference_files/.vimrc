@@ -1,1 +1,1 @@
-so ~/.config/dotfiles/.vimrc
+so ~/.config/dotfiles/configs/vim/.vimrc

@@ -1,2 +1,0 @@
-pshell "PATH\TO\wt.exe" -p "Windows PowerShell"
-wsl_home "PATH\TO\wt.exe" -p "Ubuntu" -d "wsl\home\dir"
