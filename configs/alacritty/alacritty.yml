@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 0
-    y: 0
+    x: 10
+    y: 10
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -788,7 +788,7 @@ alt_send_esc: false
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
@@ -898,6 +898,20 @@ alt_send_esc: false
   #- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
   #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
   #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
+  - { key: J,        mods: Command,     chars: "\x1bj"                       }
+  - { key: K,        mods: Command,     chars: "\x1bk"                       }
+  - { key: H,        mods: Command,     chars: "\x1bh"                       }
+  - { key: L,        mods: Command,     chars: "\x1bl"                       }
+  - { key: 1,        mods: Command,     chars: "\x1ba"                       }
+  - { key: 2,        mods: Command,     chars: "\x1bb"                       }
+  - { key: 3,        mods: Command,     chars: "\x1bc"                       }
+  - { key: 4,        mods: Command,     chars: "\x1bd"                       }
+  - { key: 5,        mods: Command,     chars: "\x1b5"                       }
+  - { key: 6,        mods: Command,     chars: "\x1b6"                       }
+  - { key: 7,        mods: Command,     chars: "\x1b7"                       }
+  - { key: 8,        mods: Command,     chars: "\x1b8"                       }
+  - { key: 9,        mods: Command,     chars: "\x1b9"                       }
+  - { key: 0,        mods: Command,     chars: "\x1b0"                       }
 
 #debug:
   # Display the time it takes to redraw each frame.
