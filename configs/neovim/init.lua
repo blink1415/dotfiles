@@ -37,7 +37,14 @@ local config = {
     },
   },
   default_theme = {
-    diagnostics_style = { italic = true },
+    highlights = function(hl)
+      hl.DiagnosticError.italic = true
+      hl.DiagnosticHint.italic = true
+      hl.DiagnosticInfo.italic = true
+      hl.DiagnosticWarn.italic = true
+
+      return hl
+    end,
     colors = {
       fg = "#abb2bf",
       bg = "#1e222a",
@@ -224,13 +231,6 @@ local config = {
         end
       },
 
-      {
-        "kevinhwang91/nvim-ufo",
-        requires = 'kevinhwang91/promise-async',
-        config = function()
-          require("ufo").setup()
-        end,
-      },
       {
         "kylechui/nvim-surround",
         config = function()
@@ -504,7 +504,7 @@ local config = {
   },
 
   ["which-key"] = {
-    register_mappings = {
+    register = {
       n = {
         ["<leader>"] = {
           ["b"] = { name = "Buffer" },
