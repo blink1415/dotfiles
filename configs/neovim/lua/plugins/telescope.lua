@@ -31,9 +31,9 @@ return {
         require("telescope").load_extension('projects')
 
         vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles,
-            { desc = '[?] Find recently opened files' })
+            { desc = 'Find recently opened files' })
         vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers,
-            { desc = '[ ] Find existing buffers' })
+            { desc = 'Find existing buffers' })
         vim.keymap.set('n', '<leader>/', function()
             -- You can pass additional configuration to telescope to change theme, layout, etc.
             require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -42,11 +42,11 @@ return {
             })
         end, { desc = '[/] Fuzzily search in current buffer]' })
 
-        vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc = 'Search [F]iles' })
-        vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-        vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-        vim.keymap.set('n', '<leader>g', require('telescope.builtin').live_grep, { desc = 'Search by [G]rep' })
-        vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-        vim.keymap.set('n', '<leader>p', "<cmd>Telescope projects<cr>", { desc = 'Search [P]rojects' })
+        vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc = 'Search files' })
+        vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search help' })
+        vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = 'Search current word' })
+        vim.keymap.set('n', '<leader>g', require('telescope.builtin').live_grep, { desc = 'Search by grep' })
+        vim.keymap.set('n', '<leader>ld', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
+        vim.keymap.set('n', '<leader>p', "<cmd>Telescope projects<cr>", { desc = 'Search projects' })
     end
 }
