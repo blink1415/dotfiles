@@ -9,6 +9,8 @@ return {
       -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
     },
+  lazy = true,
+  event = "BufEnter",
 
     config = function()
 
