@@ -1,7 +1,25 @@
 local config = function()
     local conditions = require("heirline.conditions")
     local utils = require("heirline.utils")
-    local colors = require 'kanagawa.colors'.setup() -- wink
+    local colors = {
+        bright_bg = utils.get_highlight("Folded").bg,
+        bright_fg = utils.get_highlight("Folded").fg,
+        red = utils.get_highlight("DiagnosticError").fg,
+        dark_red = utils.get_highlight("DiffDelete").bg,
+        green = utils.get_highlight("String").fg,
+        blue = utils.get_highlight("Function").fg,
+        gray = utils.get_highlight("NonText").fg,
+        orange = utils.get_highlight("Constant").fg,
+        purple = utils.get_highlight("Statement").fg,
+        cyan = utils.get_highlight("Special").fg,
+        diag_warn = utils.get_highlight("DiagnosticWarn").fg,
+        diag_error = utils.get_highlight("DiagnosticError").fg,
+        diag_hint = utils.get_highlight("DiagnosticHint").fg,
+        diag_info = utils.get_highlight("DiagnosticInfo").fg,
+        git_del = utils.get_highlight("diffDeleted").fg,
+        git_add = utils.get_highlight("diffAdded").fg,
+        git_change = utils.get_highlight("diffChanged").fg,
+    }
     require('heirline').load_colors(colors)
 
     local Align = { provider = "%=" }
@@ -88,7 +106,7 @@ local config = function()
         -- control the padding and make sure our string is always at least 2
         -- characters long. Plus a nice Icon.
         provider = function(self)
-            return " %2(" .. self.mode_names[self.mode] .. "%)"
+            return "  %2(" .. self.mode_names[self.mode] .. "%) "
         end,
         -- Same goes for the highlight. Now the foreground will change according to the current mode.
         hl = function(self)
@@ -102,8 +120,25 @@ local config = function()
             "ModeChanged",
         },
     }
-    ViMode = utils.surround({ "", "" }, "bright_bg", { ViMode })
+    ViMode = utils.surround({ "", "" }, colors.bright_bg, { ViMode })
 
+    local LSPActive = {
+        condition = conditions.lsp_attached,
+        update = {'LspAttach', 'LspDetach'},
+
+        -- You can keep it simple,
+        -- provider = " [LSP]",
+
+        -- Or complicate things a bit and get the servers names
+        provider  = function()
+            local names = {}
+            for i, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+                table.insert(names, server.name)
+            end
+            return " " .. table.concat(names, " ") .. ""
+        end,
+        hl = { fg = "green", bold = true },
+    }
 
     local FileNameBlock = {
         -- let's first set up some attributes needed by this component and it's children
@@ -191,15 +226,19 @@ local config = function()
         update = 'CursorMoved'
     }
 
+    vim.fn.sign_define("DiagnosticSignError", { text = "✗" })
+    vim.fn.sign_define("DiagnosticSignWarn", { text = "⚠" })
+    vim.fn.sign_define("DiagnosticSignInfo", { text = "ℹ" })
+    vim.fn.sign_define("DiagnosticSignHint", { text = "✔" })
     local Diagnostics = {
 
         condition = conditions.has_diagnostics,
 
         static = {
-            -- error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
-            -- warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-            -- info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-            -- hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
+            error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
+            warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
+            info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
+            hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
         },
 
         init = function(self)
@@ -211,9 +250,6 @@ local config = function()
 
         update = { "DiagnosticChanged", "BufEnter" },
 
-        {
-            provider = "![",
-        },
         {
             provider = function(self)
                 -- 0 is just another output, we can decide to print it or not!
@@ -239,11 +275,8 @@ local config = function()
             end,
             hl = { fg = "diag_hint" },
         },
-        {
-            provider = "]",
-        },
     }
-    Diagnostics = utils.surround({ "![", "]" }, nil, Diagnostics)
+    Diagnostics = utils.surround({ "", "" }, colors.bright_bg, { Diagnostics })
 
     local Git = {
         condition = conditions.is_git_repo,
@@ -304,9 +337,7 @@ local config = function()
     -- Navic, DAPMessages, Align,
     -- LSPActive, Space, LSPMessages, Space, UltTest, Space, FileType, Space, Ruler, Space, ScrollBar
     -- }
-    local statusline = {
-        ViMode, Align, Git, Align, Diagnostics, Align, Navic, Align
-    }
+
     vim.api.nvim_create_autocmd("User", {
         pattern = 'HeirlineInitWinbar',
         callback = function(args)
@@ -502,6 +533,10 @@ local config = function()
         TabpageClose,
     }
 
+    local statusline = {
+        ViMode, Space, FileNameBlock, Space, Git, Align, Diagnostics, Space, LSPActive
+    }
+
     local tabline = { TabLineOffset, BufferLine, TabPages }
     -- local statuscolumn = {}
 
@@ -526,6 +561,7 @@ return {
     dependencies = {
         "SmiteshP/nvim-navic",
         "rebelot/kanagawa.nvim",
+        "nvim-tree/nvim-web-devicons",
     },
 
     config = config

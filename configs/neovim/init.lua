@@ -25,9 +25,12 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 vim.o.termguicolors = true
 vim.o.completeopt = 'menuone,noselect'
-vim.o.ch = 0
-vim.keymap.set({ 'n' }, 'H', '<cmd>tabprevious<cr>', { desc = "" })
-vim.keymap.set({ 'n' }, 'L', '<cmd>tabnext<cr>', { desc = "" })
+
+-- Hides commandline when not in use. Breaks when used with noice.nvim
+-- vim.o.ch = 0
+
+vim.keymap.set({ 'n' }, '<S-l>', '<cmd>bnext<cr>', { desc = "Next buffer" })
+vim.keymap.set({ 'n' }, '<S-h>', '<cmd>bprevious<cr>', { desc = "Previous buffer" })
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

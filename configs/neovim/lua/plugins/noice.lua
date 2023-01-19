@@ -1,6 +1,10 @@
 return {
   "folke/noice.nvim",
   lazy = false,
+  keys = {
+    { "<leader>ns", "<cmd>Noice telescope<cr>", desc = "Search message log" },
+    { "<leader>nv", "<cmd>Noice<cr>", desc = "View message log" },
+  },
   config = function()
     require("noice").setup({
       lsp = {

@@ -1,6 +1,7 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v2.x",
+  event = "BufEnter",
   keys = {
     { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
   },
@@ -52,14 +53,6 @@ return {
       enable_git_status = true,
       enable_diagnostics = true,
       sort_case_insensitive = true, -- used when sorting files and directories in the tree
-      sort_function = nil, -- use a custom function for sorting files and directories in the tree
-      -- sort_function = function (a,b)
-      --       if a.type == b.type then
-      --           return a.path > b.path
-      --       else
-      --           return a.type > b.type
-      --       end
-      --   end , -- this sorts files and directories descendantly
       default_component_configs = {
         container = {
           enable_character_fade = true
@@ -191,7 +184,7 @@ return {
             --".null-ls_*",
           },
         },
-        follow_current_file = false, -- This will find and focus the file in the active buffer every
+        follow_current_file = true, -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
         group_empty_dirs = false, -- when true, empty folders will be grouped together
         hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
@@ -199,7 +192,7 @@ return {
         -- "open_current",  -- netrw disabled, opening a directory opens within the
         -- window like netrw would, regardless of window.position
         -- "disabled",    -- netrw left alone, neo-tree does not handle opening dirs
-        use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+        use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
         -- instead of relying on nvim autocmd events.
         window = {
           mappings = {
