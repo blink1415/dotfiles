@@ -6,7 +6,6 @@ return {
     },
     config = function()
         require("toggleterm").setup({
-            open_mapping = [[<leader>t]],
             direction = "float",
             size = function()
                 return vim.o.columns * 0.5
@@ -15,7 +14,7 @@ return {
         })
         function _G.set_terminal_keymaps()
           local opts = {buffer = 0}
-          vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+          vim.keymap.set('n', '<esc><esc>', "<cmd>ToggleTerm<cr>", opts)
           vim.keymap.set('t', '<esc><esc>', "<cmd>ToggleTerm<cr>", opts)
         end
 

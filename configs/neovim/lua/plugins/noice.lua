@@ -18,9 +18,11 @@ return {
         lsp_doc_border = true,
       },
     })
+    require("telescope").load_extension("noice")
   end,
   dependencies = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
+    'nvim-telescope/telescope.nvim',
   }
 }

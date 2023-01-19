@@ -102,7 +102,7 @@ local config = function()
             "ModeChanged",
         },
     }
-    ViMode = utils.surround({ "", "" }, "bright_bg", { ViMode, Snippets })
+    ViMode = utils.surround({ "", "" }, "bright_bg", { ViMode })
 
 
     local FileNameBlock = {
