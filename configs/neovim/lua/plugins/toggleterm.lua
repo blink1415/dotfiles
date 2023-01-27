@@ -3,6 +3,8 @@ return {
     lazy = true,
     keys = {
       { "<leader>t", "<cmd>ToggleTerm<cr>", desc = "Toggle term" },
+      { "<leader>T", "<cmd>ToggleTerm 2<cr>", desc = "Toggle term 2" },
+      { "<esc><esc>", "<cmd>ToggleTerm<cr>", mode = "t", desc = "Close toggle term" },
     },
     config = function()
         require("toggleterm").setup({
@@ -14,7 +16,6 @@ return {
         })
         function _G.set_terminal_keymaps()
           local opts = {buffer = 0}
-          vim.keymap.set('n', '<esc><esc>', "<cmd>ToggleTerm<cr>", opts)
           vim.keymap.set('t', '<esc><esc>', "<cmd>ToggleTerm<cr>", opts)
         end
 

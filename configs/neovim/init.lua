@@ -34,6 +34,7 @@ vim.keymap.set({ 'n' }, '<S-h>', '<cmd>bprevious<cr>', { desc = "Previous buffer
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('v', 'x', "'d'", { expr = true, silent = true })
 vim.cmd([[set clipboard+=unnamedplus]])
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

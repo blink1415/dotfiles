@@ -23,7 +23,9 @@ local config = function()
     require('heirline').load_colors(colors)
 
     local Align = { provider = "%=" }
-    local Space = { provider = " " }
+    local Space = { provider = " ",
+        hl = { fg = utils.get_highlight("Directory").fg },
+    }
 
     local ViMode = {
         -- get vim current mode, this information will be required by the provider
@@ -276,7 +278,6 @@ local config = function()
             hl = { fg = "diag_hint" },
         },
     }
-    Diagnostics = utils.surround({ "", "" }, colors.bright_bg, { Diagnostics })
 
     local Git = {
         condition = conditions.is_git_repo,

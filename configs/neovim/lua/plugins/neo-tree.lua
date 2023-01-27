@@ -3,7 +3,7 @@ return {
   branch = "v2.x",
   event = "BufEnter",
   keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
+    { "<leader>e", "<cmd>NeoTreeShowToggle<cr>", desc = "Toggle Neotree" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
