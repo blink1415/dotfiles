@@ -2,9 +2,8 @@ return {
     "akinsho/toggleterm.nvim",
     lazy = true,
     keys = {
-      { "<leader>t", "<cmd>ToggleTerm<cr>", desc = "Toggle term" },
-      { "<leader>T", "<cmd>ToggleTerm 2<cr>", desc = "Toggle term 2" },
-      { "<esc><esc>", "<cmd>ToggleTerm<cr>", mode = "t", desc = "Close toggle term" },
+        { "<leader>t", "<cmd>ToggleTerm<cr>", desc = "Toggle term" },
+        { "<leader>T", "<cmd>ToggleTerm 2<cr>", desc = "Toggle term 2" },
     },
     config = function()
         require("toggleterm").setup({
@@ -13,13 +12,14 @@ return {
                 return vim.o.columns * 0.5
             end,
             autochdir = true,
+            winbar = {
+                enabled = true,
+                name_formatter = function(term)
+                    return term.name
+                end
+            },
+            open_mapping = [[<esc><esc>]],
+            terminal_mappings = true,
         })
-        function _G.set_terminal_keymaps()
-          local opts = {buffer = 0}
-          vim.keymap.set('t', '<esc><esc>', "<cmd>ToggleTerm<cr>", opts)
-        end
-
-        -- if you only want these mappings for toggle term use term://*toggleterm#* instead
-        vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
     end
 }

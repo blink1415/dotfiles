@@ -155,6 +155,7 @@ return {
           ["?"] = "show_help",
           ["<"] = "prev_source",
           [">"] = "next_source",
+          ["<space>"] = false,
         }
       },
       nesting_rules = {},
