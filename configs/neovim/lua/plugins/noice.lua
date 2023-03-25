@@ -22,6 +22,9 @@ return {
         inc_rename = true,
         lsp_doc_border = true,
       },
+      signature = {
+        enabled = false
+      }
     })
     require("telescope").load_extension("noice")
   end,

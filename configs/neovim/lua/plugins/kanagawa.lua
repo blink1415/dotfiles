@@ -18,8 +18,14 @@ return {
 			globalStatus = false, -- adjust window separators highlight for laststatus=3
 			terminalColors = true, -- define vim.g.terminal_color_{0,17}
 			colors = {},
-			overrides = {},
-			theme = "default" -- Load "default" theme or the experimental "light" theme
+			overrides = function(colors)
+				return {}
+			end,
+			theme = "wave",
+			background = {
+				dark = "wave",
+				light = "lotus",
+			},
 		})
 		vim.cmd([[colorscheme kanagawa]])
 	end

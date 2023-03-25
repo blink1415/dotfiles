@@ -69,7 +69,8 @@ return {
             buttons = {
                 type = "group",
                 val = {
-                    button("SPC p", "  Open projects"),
+                    button("Space p", "  Open projects"),
+                    button("Space o", "✓ Start neorg"),
                 },
                 opts = {
                     spacing = 1,

@@ -18,7 +18,7 @@ return {
                     return term.name
                 end
             },
-            open_mapping = [[<esc><esc>]],
+            open_mapping = [[<F7>]],
             terminal_mappings = true,
         })
     end

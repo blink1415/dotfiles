@@ -12,7 +12,7 @@ return {
         require("mason").setup()
         require("mason-null-ls").setup({
             ensure_installed = { "stylua", "jq", "rustfmt", "gofumpt", "prettierd" },
-            automatic_installation = false,
+            automatic_installation = true,
             automatic_setup = true,
         })
         require("null-ls").setup()

@@ -4,7 +4,10 @@ return {
     event = "InsertEnter",
     config = function()
         require("Comment").setup({
-            mappings = true
+            mappings = {
+                basic = true,
+                extra = false,
+            }
         })
     end
 }
