@@ -22,7 +22,9 @@ local config = function()
     }
     require('heirline').load_colors(colors)
 
-    local Align = { provider = "%=" }
+    local Align = { provider = "%=",
+        hl = { fg = utils.get_highlight("Directory").fg },
+    }
     local Space = { provider = " ",
         hl = { fg = utils.get_highlight("Directory").fg },
     }
@@ -134,7 +136,7 @@ local config = function()
         -- Or complicate things a bit and get the servers names
         provider  = function()
             local names = {}
-            for i, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+            for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
                 table.insert(names, server.name)
             end
             return " " .. table.concat(names, " ") .. ""
@@ -535,7 +537,7 @@ local config = function()
     }
 
     local statusline = {
-        ViMode, Space, FileNameBlock, Space, Git, Align, Diagnostics, Space, LSPActive
+        ViMode, Space, Git, Space, FileNameBlock, Align, Diagnostics, Space, LSPActive
     }
 
     local tabline = { TabLineOffset, BufferLine, TabPages }
@@ -551,7 +553,7 @@ local config = function()
 
 
     -- Yep, with heirline we're driving manual!
-    vim.o.showtabline = 2
+    vim.o.showtabline = 0
     vim.cmd([[au FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]])
 end
 

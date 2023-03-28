@@ -75,7 +75,7 @@ alias ls="lsd"
 alias ll="lsd -l"
 alias la="lsd -la"
 
-alias g="git"
+alias gti="git"
 alias gb="git checkout -b"
 alias v="nvim"
 

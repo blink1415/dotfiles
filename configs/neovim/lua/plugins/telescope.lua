@@ -6,14 +6,16 @@ return {
         'nvim-lua/plenary.nvim',
         "ahmedkhalf/project.nvim",
     },
-    lazy = false,
+    event = "BufEnter",
     config = function()
+        local actions = require("telescope.actions")
         require('telescope').setup {
             defaults = {
                 mappings = {
                     i = {
-                        ['<C-j>'] = false,
-                        ['<C-k>'] = false,
+                        ['<C-j>'] = actions.move_selection_next,
+                        ['<C-k>'] = actions.move_selection_previous,
+                        ['<esc>'] = actions.close
                     },
                 },
             },
