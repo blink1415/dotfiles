@@ -23,12 +23,6 @@ return {
       pyright = {},
       rust_analyzer = {},
       tsserver = {},
-      sumneko_lua = {
-        Lua = {
-          workspace = { checkThirdParty = false },
-          telemetry = { enable = false },
-        },
-      },
     }
 
     mason_lspconfig.setup {
@@ -78,15 +72,5 @@ return {
     require('neodev').setup()
     require('fidget').setup()
 
-    require('lspconfig').sumneko_lua.setup {
-      settings = {
-        Lua = {
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = {'vim'},
-          },
-        },
-      },
-    }
   end
 }

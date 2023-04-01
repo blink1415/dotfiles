@@ -54,6 +54,12 @@ vim.o.completeopt = "menuone,noselect"
 -- Set the number of status lines to display
 vim.o.laststatus = 3
 
+-- Enable cursorline
+vim.o.cursorline = 1
+
+-- Set tab size to 4 spaces
+vim.o.tabstop = 4
+
 -- Hides commandline when not in use. Breaks when used with noice.nvim
 -- vim.o.ch = 0
 
@@ -62,8 +68,8 @@ map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("v", "x", "'d'", { expr = true, silent = true })
-map("n", "[d", vim.diagnostic.goto_prev)
-map("n", "]d", vim.diagnostic.goto_next)
+map("n", "<leader>1", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic"})
+map("n", "<leader>2", vim.diagnostic.goto_next, { desc = "Go to next diagnostic"})
 map("n", "<leader>k", vim.diagnostic.open_float, { desc = "Float diagnostic"})
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic list"})
 map('n', '<S-h>', '<C-o>', { noremap = true, silent = true })

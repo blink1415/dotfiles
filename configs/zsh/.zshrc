@@ -31,7 +31,7 @@ compctl -K    _pyenv pyenv
 #prompt pure
 
 # Auto start tmux
-if [ "$TMUX" = "" ]; then tmux; fi
+# if [ "$TMUX" = "" ]; then tmux; fi
 
 # Vim keybinds
 bindkey -v
