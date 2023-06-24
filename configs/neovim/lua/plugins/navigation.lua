@@ -90,6 +90,6 @@ return {
                 reorient = "top",
 			},
 		})
-		map("n", "<leader><leader>", navbuddy.open, { desc = "Open navigation" })
+		map("n", "<leader>i", navbuddy.open, { desc = "Open navigation" })
 	end,
 }

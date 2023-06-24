@@ -5,4 +5,7 @@ bold_italic_font CaskaydiaCove Nerd Font Bold Italic
 
 font size 18.0
 
+
+# BEGIN_KITTY_THEME
 include kanagawa.conf
+# END_KITTY_THEME

@@ -10,20 +10,20 @@ return {
         "lukas-reineke/lsp-format.nvim",
     },
     config = function()
+        require("null-ls").setup()
         require("mason").setup()
         require("mason-null-ls").setup({
             ensure_installed = {},
             automatic_installation = true,
             automatic_setup = true,
         })
-        require("null-ls").setup()
 
-        require('mason-null-ls').setup_handlers()
-
-        require("lsp-format").setup {}
-        require("lspconfig").gofumpt.setup { on_attach = require("lsp-format").on_attach }
-        require("lspconfig").rustfmt.setup { on_attach = require("lsp-format").on_attach }
-        require("lspconfig").prettierd.setup { on_attach = require("lsp-format").on_attach }
-        require("lspconfig").stylua.setup { on_attach = require("lsp-format").on_attach }
+        -- require('mason-null-ls').setup_handlers()
+        --
+        -- require("lsp-format").setup {}
+        -- require("lspconfig").gofumpt.setup { on_attach = require("lsp-format").on_attach }
+        -- require("lspconfig").rustfmt.setup { on_attach = require("lsp-format").on_attach }
+        -- require("lspconfig").prettierd.setup { on_attach = require("lsp-format").on_attach }
+        -- require("lspconfig").stylua.setup { on_attach = require("lsp-format").on_attach }
     end
 }

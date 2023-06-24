@@ -77,6 +77,8 @@ alias la="lsd -la"
 
 alias gti="git"
 alias gb="git checkout -b"
+alias gs="git status"
+alias gd="git diff"
 alias v="nvim"
 
 #-------------Starship----------------

@@ -6,6 +6,7 @@ return {
         { "<leader>lc", "<cmd>Copilot enable<cr>", desc = "Enable copilot" },
         { "<leader>lC", "<cmd>Copilot disable<cr>", desc = "Disable copilot" },
     },
+    enabled = false,
     config = function()
     end
 }
