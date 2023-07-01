@@ -13,7 +13,6 @@ end
 _G.vim = vim
 vim.opt.rtp:prepend(lazypath)
 
-
 -- Set the leader key for mappings to " "
 vim.g.mapleader = " "
 

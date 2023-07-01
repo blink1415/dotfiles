@@ -1,7 +1,7 @@
 return {
     "numToStr/Comment.nvim",
     lazy = true,
-    event = "InsertEnter",
+    event = "BufEnter",
     config = function()
         require("Comment").setup({
             mappings = {

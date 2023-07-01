@@ -1,7 +1,6 @@
 return {
   'tpope/vim-sleuth',
   'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
 
   {
     'lukas-reineke/indent-blankline.nvim',

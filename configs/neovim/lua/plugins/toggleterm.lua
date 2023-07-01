@@ -2,8 +2,7 @@ return {
     "akinsho/toggleterm.nvim",
     lazy = true,
     keys = {
-        { "<leader>t", "<cmd>ToggleTerm<cr>", desc = "Toggle term" },
-        { "<leader>T", "<cmd>ToggleTerm 2<cr>", desc = "Toggle term 2" },
+        { "<c-o>", "<cmd>ToggleTerm<cr>", desc = "Toggle term" },
     },
     config = function()
         require("toggleterm").setup({
@@ -18,7 +17,7 @@ return {
                     return term.name
                 end
             },
-            open_mapping = [[<F7>]],
+            open_mapping = [[<c-o>]],
             terminal_mappings = true,
         })
     end

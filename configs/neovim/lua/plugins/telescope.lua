@@ -47,7 +47,6 @@ return {
         vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search help' })
         vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = 'Search current word' })
         vim.keymap.set('n', '<leader>g', require('telescope.builtin').live_grep, { desc = 'Search by grep' })
-        vim.keymap.set('n', '<leader>ld', require('telescope.builtin').diagnostics, { desc = 'Search diagnostics' })
         vim.keymap.set('n', '<leader>p', "<cmd>Telescope projects<cr>", { desc = 'Search projects' })
     end
 }

@@ -1,5 +1,6 @@
 return {
     "ErichDonGubler/lsp_lines.nvim",
+    event = "BufEnter",
     config = function()
         require("lsp_lines").setup()
 
