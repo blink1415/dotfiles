@@ -80,6 +80,15 @@ map('n', '<S-l>', '<C-i>', { noremap = true, silent = true })
 
 
 
+-- Function to set tmux pane title
+rename_tmux_pane = function()
+	local current_directory = vim.fn.fnamemodify(vim.fn.expand('%:p:h'), ':t')
+	vim.api.nvim_command("silent !tmux rename-window '" .. current_directory .. "'")
+end
+
+-- Autocommand to update tmux pane title on VimEnter and BufEnter
+vim.api.nvim_command([[autocmd DirChanged * lua rename_tmux_pane()]])
+
 vim.cmd([[set clipboard+=unnamedplus]])
 
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
