@@ -10,7 +10,7 @@ return {
   lazy = true,
 
   keys = {
-    { "<leader>lD", "<cmd>DBUIToggle<cr>", desc = "Open database UI" },
+    { "<leader>lC", "<cmd>DBUIToggle<cr>", desc = "Open database UI" },
   },
 
   config = function()

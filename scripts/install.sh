@@ -1,25 +1,31 @@
+#!/bin/bash
+
+if [ ! -d "~/.config/dotfiles" ] 
+then
+    echo "The repository must be cloned to ~/.config/dotfiles" 
+    exit 1
+fi
+
 cd ~/.config/dotfiles
 
-./scripts/install/nvim.sh
+# Dependencies
+echo "Cargo is required for the nvim version manager. Installing rust..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-sudo apt install zsh;
-sudo apt install tmux;
-cp ./reference_files/ $HOME/;
+echo "Homebrew is required for the shell and multiplexer. Installing homebrew..."
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Install nvim version manager
+cargo install --git https://github.com/MordechaiHadad/bob.git
+bob use latest
 
-# nvim
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
+export PATH="$PATH:/Users/nikolai/.local/share/bob/nvim-bin"
 
-./nvim.appimage --appimage-extract
-./squashfs-root/AppRun --version
+ln -s ~/.config/dotfiles/configs/neovim ~/.config/nvim
 
-# Optional: exposing nvim globally.
-mv squashfs-root /
-ln -s /squashfs-root/AppRun /usr/bin/nvim
-nvim
+# Shell and terminal multiplexer
+brew install zsh -y
+brew install tmux -y
 
-
-git clone https://github.com/AstroNvim/AstroNvim.git ./nvim-astro
-ln -s ./nvim-astro ~/.config/nvim
-
+echo "source ~/.config/dotfiles/configs/zsh/.zshrc" > ~/.zshrc
+echo "source ~/.config/dotfiles/configs/tmux/.tmux.conf" > ~/.tmux.conf
