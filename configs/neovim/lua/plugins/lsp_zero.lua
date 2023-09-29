@@ -31,19 +31,41 @@ return {
                 }
             end
 
+
             vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', desc(true, "Get references"))
             vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', desc(true, "Go to definition"))
             vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<cr>', desc(true, "Go to implementation"))
 
-            vim.keymap.set('n', '<leader>lD', '<cmd>lua vim.diagnostic.open_float()<cr>', desc(true, "Open floating diagnostic"))
+            vim.keymap.set('n', '<leader>lD', '<cmd>lua vim.diagnostic.open_float()<cr>',
+                desc(true, "Open floating diagnostic"))
             vim.keymap.set('n', '<leader>lf', '<cmd>LspZeroFormat<cr>', desc(true, "Format buffer"))
             vim.keymap.set('n', '<leader>ld', '<cmd>Telescope diagnostics<cr>', desc(true, "Search diagnostics"))
             vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc(true, "Code action"))
             vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', desc(true, "Rename"))
 
-            vim.keymap.set('n', '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', desc(true, "Previous diagnostic"))
+            vim.keymap.set('n', '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>',
+                desc(true, "Previous diagnostic"))
             vim.keymap.set('n', '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<cr>', desc(true, "Next diagnostic"))
         end)
+
+        require('mason').setup({})
+        require('mason-lspconfig').setup({
+            -- Replace the language servers listed here
+            -- with the ones you want to install
+            ensure_installed = {
+                'tsserver',
+                'rust_analyzer',
+                'gopls',
+                'lua_ls',
+                'html-lsp',
+                'json-lsp',
+                'prettier',
+                'fsautocomplete',
+            },
+            handlers = {
+                lsp.default_setup,
+            }
+        })
 
         -- (Optional) Configure lua language server for neovim
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
