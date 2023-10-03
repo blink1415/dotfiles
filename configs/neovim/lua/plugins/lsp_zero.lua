@@ -55,12 +55,7 @@ return {
             ensure_installed = {
                 'tsserver',
                 'rust_analyzer',
-                'gopls',
                 'lua_ls',
-                'html-lsp',
-                'json-lsp',
-                'prettier',
-                'fsautocomplete',
             },
             handlers = {
                 lsp.default_setup,
