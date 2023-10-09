@@ -5,8 +5,11 @@ return {
         "neovim/nvim-lspconfig",
         "nvim-treesitter/nvim-treesitter",
     },
+    enabled = true,
     lazy = false,
+    build = ":TSInstallFromGrammar fsharp",
     config = function()
+        require("ionide").setup({})
         local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
         parser_config.fsharp = {
             install_info = {
