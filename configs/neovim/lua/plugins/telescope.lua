@@ -5,6 +5,7 @@ return {
     {
         'nvim-lua/plenary.nvim',
         "ahmedkhalf/project.nvim",
+        'nvim-telescope/telescope-fzf-native.nvim',
     },
     event = "BufEnter",
     config = function()
@@ -31,6 +32,7 @@ return {
             datapath = vim.fn.stdpath("data"),
         })
         require("telescope").load_extension('projects')
+        require('telescope').load_extension("fzf")
 
         vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles,
             { desc = 'Find recently opened files' })

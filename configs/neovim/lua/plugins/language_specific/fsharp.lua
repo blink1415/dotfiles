@@ -5,8 +5,8 @@ return {
         "neovim/nvim-lspconfig",
         "nvim-treesitter/nvim-treesitter",
     },
-    enabled = true,
-    lazy = false,
+    lazy = true,
+    event = "VeryLazy",
     build = ":TSInstallFromGrammar fsharp",
     config = function()
         require("ionide").setup({})

@@ -9,7 +9,6 @@ operator = "boatYellow2"
 # "variable.other.member" = ""
 variable = "carpYellow"
 "variable.parameter" = { modifiers = ["underlined"] }
-"variable.parameter" = { fg = "" }
 "variable.builtin" = "waveRed"
 type = "waveAqua2"
 "type.builtin" = "waveAqua2" # TODO: distinguish?

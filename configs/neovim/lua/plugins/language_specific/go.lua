@@ -15,6 +15,16 @@ return {
             -- test_runner = "gotestsum",
             run_in_floaterm = true,
         })
+
+        local desc = function(buf, desc)
+            return {
+                buffer = buf,
+                desc = desc,
+            }
+        end
+        vim.keymap.set('n', '<leader>db', '<cmd>GoBreakToggle<cr>', desc(true, "Toggle breakpoints"))
+        vim.keymap.set('n', '<leader>ds', '<cmd>GoDebugStart<cr>', desc(true, "Start debug"))
+        vim.keymap.set('n', '<leader>dq', '<cmd>GoDbgStop<cr>', desc(true, "Stop debug"))
     end,
     ft = { "go", 'gomod' },
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
