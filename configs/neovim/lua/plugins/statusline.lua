@@ -22,13 +22,6 @@ local config = function()
 	}
 	require('heirline').load_colors(colors)
 
-	local FileEncoding = {
-		provider = function()
-			local enc = (vim.bo.fenc ~= '' and vim.bo.fenc) or vim.o.enc -- :h 'enc'
-			return enc ~= 'utf-8' and enc:upper()
-		end
-	}
-
 	local Align = {
 		provider = "%=",
 		hl = { fg = utils.get_highlight("Directory").fg },
@@ -113,7 +106,7 @@ local config = function()
 		FileIcon,
 		utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
 		FileFlags,
-		{ provider = '%<' }              -- this means that the statusline is cut here when there's not enough space
+		{ provider = '%<' }        -- this means that the statusline is cut here when there's not enough space
 	)
 
 	local ViMode = {
@@ -222,7 +215,7 @@ local config = function()
 			for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
 				table.insert(names, server.name)
 			end
-			return " " .. table.concat(names, " ") .. ""
+			return "  " .. table.concat(names, ", ")
 		end,
 		hl        = { fg = "green", bold = true },
 	}
@@ -332,25 +325,12 @@ local config = function()
 		},
 	}
 
-	vim.api.nvim_create_autocmd("User", {
-		pattern = 'HeirlineInitWinbar',
-		callback = function(args)
-			local buf = args.buf
-			local buftype = vim.tbl_contains(
-				{ "prompt", "nofile", "help", "quickfix" },
-				vim.bo[buf].buftype
-			)
-			local filetype = vim.tbl_contains({ "gitcommit", "fugitive" }, vim.bo[buf].filetype)
-			if buftype or filetype then
-				vim.opt_local.winbar = nil
-			end
-		end,
-	})
 
 	local statusline = {
-		ViMode, Space, Git, Space, FileNameBlock, FileEncoding, Space, Align, LSPActive, Space, Diagnostics,
+		ViMode, Space, Git, Align, LSPActive, Space, Diagnostics,
 		Space
 	}
+
 
 	require("heirline").setup({
 		statusline = statusline,
