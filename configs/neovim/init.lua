@@ -59,6 +59,8 @@ vim.o.cursorline = 1
 -- Set tab size to 4 spaces
 vim.o.tabstop = 4
 
+vim.o.shiftwidth = 4
+
 -- Hides commandline when not in use. Breaks when used with noice.nvim
 -- vim.o.ch = 0
 
@@ -102,4 +104,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 
-require("lazy").setup({ { import = "plugins" }, { import = "plugins.language_specific" } })
+require("lazy").setup({ { "tpope/vim-sensible" }, { import = "plugins" }, { import = "plugins.language_specific" } })

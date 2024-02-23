@@ -327,7 +327,7 @@ local config = function()
 
 
 	local statusline = {
-		ViMode, Space, Git, Align, LSPActive, Space, Diagnostics,
+		ViMode, Space, Git, Space, FileNameBlock, Align, LSPActive, Space, Diagnostics,
 		Space
 	}
 
