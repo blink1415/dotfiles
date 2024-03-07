@@ -29,6 +29,7 @@ return {
 		require("notify").setup({
 			render = "compact",
 			fps = 30,
+			top_down = false,
 		})
 	end,
 	dependencies = {

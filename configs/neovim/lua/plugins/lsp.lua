@@ -1,7 +1,7 @@
 return {
 	{
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		branch = 'v3.x',
 		event = "BufEnter",
 		dependencies = {
 			'neovim/nvim-lspconfig',
@@ -16,6 +16,7 @@ return {
 			'hrsh7th/cmp-nvim-lsp',
 			'L3MON4D3/LuaSnip',
 			'nvim-telescope/telescope.nvim',
+			'onsails/lspkind.nvim',
 		},
 		config = function()
 			local lsp = require('lsp-zero').preset({})
@@ -60,11 +61,7 @@ return {
 			require('mason-lspconfig').setup({
 				-- Replace the language servers listed here
 				-- with the ones you want to install
-				ensure_installed = {
-					'tsserver',
-					'rust_analyzer',
-					'lua_ls',
-				},
+				ensure_installed = {},
 				handlers = {
 					lsp.default_setup,
 				}
@@ -76,6 +73,7 @@ return {
 			-- You need to setup `cmp` after lsp-zero
 			local cmp = require('cmp')
 			local cmp_action = require('lsp-zero').cmp_action()
+			local lspkind = require('lspkind')
 
 			cmp.setup({
 				mapping = {
@@ -91,6 +89,17 @@ return {
 					-- Navigate between snippet placeholder
 					['<C-f>'] = cmp_action.luasnip_jump_forward(),
 					['<C-b>'] = cmp_action.luasnip_jump_backward(),
+				},
+				formatting = {
+					format = lspkind.cmp_format({
+						mode = 'symbol_text', -- show only symbol annotations
+						maxwidth = 50,						ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+						show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+
+						before = function(entry, vim_item)
+							return vim_item
+						end
+					})
 				}
 			})
 

@@ -1,9 +1,9 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  branch = "v2.x",
+  branch = "v3.x",
   event = "BufEnter",
   keys = {
-    { "<leader>e", "<cmd>NeoTreeShowToggle<cr>", desc = "Toggle Neotree" },
+    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
