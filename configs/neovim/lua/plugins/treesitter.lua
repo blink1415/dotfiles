@@ -2,7 +2,6 @@ return { -- Highlight, edit, and navigate code
 	'nvim-treesitter/nvim-treesitter',
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter-textobjects',
-		-- { "nushell/tree-sitter-nu" },
 	},
 	lazy = true,
 	event = "BufEnter",
@@ -12,7 +11,7 @@ return { -- Highlight, edit, and navigate code
 		require('nvim-treesitter.configs').setup {
 			-- Add languages to be installed here that you want installed for treesitter
 			ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim', 'php', 'sql',
-				'java' },
+				'java', 'nu' },
 
 			highlight = { enable = true },
 			indent = { enable = true, disable = { 'python' } },

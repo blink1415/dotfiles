@@ -90,17 +90,25 @@ return {
 					['<C-f>'] = cmp_action.luasnip_jump_forward(),
 					['<C-b>'] = cmp_action.luasnip_jump_backward(),
 				},
+				window = {
+					completion = {
+						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+						col_offset = -3,
+						side_padding = 0,
+					},
+				},
 				formatting = {
-					format = lspkind.cmp_format({
-						mode = 'symbol_text', -- show only symbol annotations
-						maxwidth = 50,						ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-						show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+					fields = { "kind", "abbr", "menu" },
+					format = function(entry, vim_item)
+						local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry,
+							vim_item)
+						local strings = vim.split(kind.kind, "%s", { trimempty = true })
+						kind.kind = " " .. (strings[1] or "") .. " "
+						kind.menu = "    (" .. (strings[2] or "") .. ")"
 
-						before = function(entry, vim_item)
-							return vim_item
-						end
-					})
-				}
+						return kind
+					end,
+				},
 			})
 
 			lsp.setup()
