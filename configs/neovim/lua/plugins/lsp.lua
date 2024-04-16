@@ -12,11 +12,16 @@ return {
 				end,
 			},
 			'williamboman/mason-lspconfig.nvim',
+			'nvim-telescope/telescope.nvim',
+
+			-- Completion
 			'hrsh7th/nvim-cmp',
 			'hrsh7th/cmp-nvim-lsp',
 			'L3MON4D3/LuaSnip',
-			'nvim-telescope/telescope.nvim',
 			'onsails/lspkind.nvim',
+
+			-- Formatting
+			'stevearc/conform.nvim',
 		},
 		config = function()
 			local lsp = require('lsp-zero').preset({})
@@ -36,23 +41,31 @@ return {
 
 				vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>',
 					desc(true, "Get references"))
+
 				vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>',
 					desc(true, "Go to definition"))
+
 				vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<cr>',
 					desc(true, "Go to implementation"))
 
 				vim.keymap.set('n', '<leader>lD', '<cmd>lua vim.diagnostic.open_float()<cr>',
 					desc(true, "Open floating diagnostic"))
-				vim.keymap.set('n', '<leader>lf', '<cmd>LspZeroFormat<cr>', desc(true, "Format buffer"))
+
+				vim.keymap.set('n', '<leader>lf', '<cmd>lua require("conform").format()<cr>',
+					desc(true, "Format buffer"))
+
 				vim.keymap.set('n', '<leader>q', '<cmd>Telescope diagnostics<cr>',
 					desc(true, "Search diagnostics"))
+
 				vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>',
 					desc(true, "Code action"))
+
 				vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>',
 					desc(true, "Rename"))
 
 				vim.keymap.set('n', '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>',
 					desc(true, "Previous diagnostic"))
+
 				vim.keymap.set('n', '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<cr>',
 					desc(true, "Next diagnostic"))
 			end)
@@ -67,13 +80,29 @@ return {
 				}
 			})
 
+			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					javascript = { { "prettierd", "prettier" } },
+					javascriptreact = { { "prettierd", "prettier" } },
+					typescript = { { "prettierd", "prettier" } },
+					typescriptreact = { { "prettierd", "prettier" } },
+					go = { { "gofumpt", "gofmt" } },
+					json = { "jq" },
+				},
+				format_on_save = {
+					timeout_ms = 500,
+					lsp_fallback = true,
+				},
+			})
+
 			-- (Optional) Configure lua language server for neovim
 			require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
 			-- You need to setup `cmp` after lsp-zero
 			local cmp = require('cmp')
 			local cmp_action = require('lsp-zero').cmp_action()
-			local lspkind = require('lspkind')
+			require('lspkind')
 
 			cmp.setup({
 				mapping = {

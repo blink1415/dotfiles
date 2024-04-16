@@ -68,29 +68,28 @@ _G.map = vim.keymap.set
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "q", "<Nop>", { silent = true })
 map("v", "x", "'d'", { expr = true, silent = true })
 map("n", "<leader>1", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 map("n", "<leader>2", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 map("n", "<leader>k", vim.diagnostic.open_float, { desc = "Float diagnostic" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic list" })
-map('n', '<S-h>', '<C-o>', { noremap = true, silent = true })
-map('n', '<S-l>', '<C-i>', { noremap = true, silent = true })
-map('n', '<leader>w', 'viw', { noremap = true, silent = true })
+map("n", "<S-h>", "<C-o>", { noremap = true, silent = true })
+map("n", "<S-l>", "<C-i>", { noremap = true, silent = true })
+map("n", "<leader>w", "viw", { noremap = true, silent = true })
 -- map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 -- map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 -- map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 -- map("t", "<esc><esc>", "<F7>", { desc = "Toggle toggleterm" })
 
-
-
 -- Function to set tmux pane title
-rename_tmux_pane = function()
-	local current_directory = vim.fn.fnamemodify(vim.fn.expand('%:p:h'), ':t')
+Rename_tmux_pane = function()
+	local current_directory = vim.fn.fnamemodify(vim.fn.expand("%:p:h"), ":t")
 	vim.api.nvim_command("silent !tmux rename-window '" .. current_directory .. "'")
 end
 
 -- Autocommand to update tmux pane title on VimEnter and BufEnter
-vim.api.nvim_command([[autocmd DirChanged * lua rename_tmux_pane()]])
+vim.api.nvim_command([[autocmd DirChanged * lua Rename_tmux_pane()]])
 
 vim.cmd([[set clipboard+=unnamedplus]])
 
@@ -103,5 +102,25 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 })
 
+require("lazy").setup({
+	{ "tpope/vim-sensible" },
+	{ import = "plugins" },
+	{ import = "plugins.language_specific" },
+	{ import = "build" },
+	{
+		"udayvir-singh/tangerine.nvim",
+		config = function()
+			local nvim_dir = vim.fn.stdpath([[config]])
+			require("tangerine").setup({
+				target = nvim_dir .. "/build",
+				compiler = {
+					-- disable popup showing compiled files
+					verbose = false,
 
-require("lazy").setup({ { "tpope/vim-sensible" }, { import = "plugins" }, { import = "plugins.language_specific" } })
+					-- compile every time you change fennel files or on entering vim
+					hooks = { "onsave", "oninit" },
+				},
+			})
+		end,
+	},
+})

@@ -14,7 +14,7 @@ return {
 		},
 		lazy = true,
 		keys = {
-			{ "<leader>lt", "<cmd>GoTestSum<cr>",    desc = "Run tests" },
+			{ "<leader>lt", "<cmd>GoTestSum<cr>", desc = "Run tests" },
 		},
 		config = function()
 			require("go").setup({
@@ -31,6 +31,14 @@ return {
 			vim.keymap.set('n', '<leader>db', '<cmd>GoBreakToggle<cr>', desc(true, "Toggle breakpoints"))
 			vim.keymap.set('n', '<leader>ds', '<cmd>GoDebugStart<cr>', desc(true, "Start debug"))
 			vim.keymap.set('n', '<leader>dq', '<cmd>GoDbgStop<cr>', desc(true, "Stop debug"))
+
+			require('lspconfig').gopls.setup({
+				settings = {
+					gopls = {
+						gofumpt = true
+					}
+				}
+			})
 
 			-- DAP
 			require('dap-go').setup {
