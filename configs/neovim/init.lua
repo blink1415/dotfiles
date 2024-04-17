@@ -105,22 +105,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 require("lazy").setup({
 	{ "tpope/vim-sensible" },
 	{ import = "plugins" },
-	{ import = "plugins.language_specific" },
-	{ import = "build" },
-	{
-		"udayvir-singh/tangerine.nvim",
-		config = function()
-			local nvim_dir = vim.fn.stdpath([[config]])
-			require("tangerine").setup({
-				target = nvim_dir .. "/build",
-				compiler = {
-					-- disable popup showing compiled files
-					verbose = false,
-
-					-- compile every time you change fennel files or on entering vim
-					hooks = { "onsave", "oninit" },
-				},
-			})
-		end,
-	},
+	{ import = "ftplugins" },
 })
