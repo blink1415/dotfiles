@@ -1,10 +1,5 @@
-return {
-	"rebelot/kanagawa.nvim",
-	lazy = false,
-	enabled = true,
-	priority = 1000,
-	config = function()
-		require("kanagawa").setup()
-		vim.cmd([[colorscheme kanagawa-lotus]])
-	end
-}
+-- :fennel:1713377620
+local function _1_()
+  return vim.cmd.colorscheme("kanagawa-lotus")
+end
+return {"rebelot/kanagawa.nvim", priority = 1000, init = _1_, lazy = false}

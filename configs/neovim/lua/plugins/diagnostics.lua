@@ -1,20 +1,2 @@
-return {
-	{
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		branch = "dev",
-		opts = {
-		},
-		event = "VeryLazy",
-		keys = {
-			{ "<leader>ld", "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle diagnostics view" },
-		},
-	},
-	{
-		'dgagn/diagflow.nvim',
-		event = 'LspAttach',
-		opts = {
-			scope = 'line',
-		}
-	}
-}
+-- :fennel:1713377632
+return {"dgagn/diagflow.nvim", event = "LspAttach", opts = {scope = "line"}}

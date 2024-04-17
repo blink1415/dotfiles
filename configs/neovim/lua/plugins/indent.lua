@@ -1,13 +1,2 @@
-return {
-	'lukas-reineke/indent-blankline.nvim',
-	lazy = true,
-	event = "VeryLazy",
-	config = function()
-		require("ibl").setup {
-			whitespace = {
-				remove_blankline_trail = true,
-			},
-			scope = { enabled = false },
-		}
-	end
-}
+-- :fennel:1713377643
+return {"lukas-reineke/indent-blankline.nvim", lazy = true, event = "VeryLazy", main = "ibl", opts = {whitespace = {remove_blankline_trail = true}, scope = {enabled = false}}}

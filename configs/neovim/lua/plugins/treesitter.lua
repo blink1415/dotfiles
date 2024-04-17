@@ -23,6 +23,7 @@ return { -- Highlight, edit, and navigate code
 				"php",
 				"sql",
 				"java",
+				"fennel",
 			},
 
 			highlight = { enable = true },
