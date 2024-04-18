@@ -104,6 +104,7 @@ return {
 					go = { { "gofumpt", "gofmt" } },
 					json = { "jq" },
 					fennel = { "fnlfmt" },
+					haskell = { { "ormolu", "formolu" } },
 				},
 				format_on_save = {
 					timeout_ms = 500,
@@ -137,6 +138,7 @@ return {
 					},
 				},
 			}
+			-- lspconfig.fennel_language_server.setup({})
 
 			-- You need to setup `cmp` after lsp-zero
 			local cmp = require("cmp")

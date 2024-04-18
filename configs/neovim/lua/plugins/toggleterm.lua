@@ -1,4 +1,4 @@
--- :fennel:1713377653
+-- :fennel:1713383605
 local config
 local function _1_()
   return (vim.o.columns * 0.5)

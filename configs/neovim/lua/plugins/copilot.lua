@@ -1,2 +1,2 @@
--- :fennel:1713377626
+-- :fennel:1713428098
 return {"zbirenbaum/copilot.lua", cmd = "Copilot", event = "InsertEnter", opts = {suggestion = {auto_trigger = true, keymap = {accept = "<TAB>", next = "<C-j>", prev = "<C-k>"}}}}

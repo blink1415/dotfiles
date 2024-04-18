@@ -28,20 +28,17 @@ return {
 					desc = desc,
 				}
 			end
-			vim.keymap.set('n', '<leader>db', '<cmd>GoBreakToggle<cr>', desc(true, "Toggle breakpoints"))
-			vim.keymap.set('n', '<leader>ds', '<cmd>GoDebugStart<cr>', desc(true, "Start debug"))
-			vim.keymap.set('n', '<leader>dq', '<cmd>GoDbgStop<cr>', desc(true, "Stop debug"))
 
-			require('lspconfig').gopls.setup({
+			require("lspconfig").gopls.setup({
 				settings = {
 					gopls = {
-						gofumpt = true
-					}
-				}
+						gofumpt = true,
+					},
+				},
 			})
 
 			-- DAP
-			require('dap-go').setup {
+			require("dap-go").setup({
 				-- Additional dap configurations can be added.
 				-- dap_configurations accepts a list of tables where each entry
 				-- represents a dap configuration. For more details do:
@@ -63,14 +60,14 @@ return {
 					-- a string that defines the port to start delve debugger.
 					-- default to string "${port}" which instructs nvim-dap
 					-- to start the process in a random available port
-					port = "${port}"
+					port = "${port}",
 				},
-			}
+			})
 		end,
-		ft = { "go", 'gomod' },
+		ft = { "go", "gomod" },
 		build = {
 			':lua require("go.install").update_all_sync()',
-			':TSInstall go',
-		} -- if you need to install/update all binaries
+			":TSInstall go",
+		}, -- if you need to install/update all binaries
 	},
 }

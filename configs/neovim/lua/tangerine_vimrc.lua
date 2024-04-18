@@ -1,4 +1,4 @@
--- :fennel:1713377608
+-- :fennel:1713383858
 do
   local lazypath = (vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
   if not vim.loop.fs_stat(lazypath) then

@@ -1,2 +1,2 @@
--- :fennel:1713377647
+-- :fennel:1713427462
 return {"mg979/vim-visual-multi"}
