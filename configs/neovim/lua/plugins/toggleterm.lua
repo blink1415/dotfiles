@@ -1,4 +1,4 @@
--- :fennel:1713549794
+-- :fennel:1713652954
 local opt
 local function _1_()
   return (_G.vim.o.columns * 0.5)

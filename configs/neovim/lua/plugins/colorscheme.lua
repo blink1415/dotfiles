@@ -1,4 +1,4 @@
--- :fennel:1713548695
+-- :fennel:1713652954
 local function _1_()
   return _G.vim.cmd.colorscheme("kanagawa-lotus")
 end

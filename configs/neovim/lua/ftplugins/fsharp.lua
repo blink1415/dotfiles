@@ -1,4 +1,4 @@
--- :fennel:1713452596
+-- :fennel:1713652954
 local fsharp_config = {install_info = {url = "https://github.com/Nsidorenco/tree-sitter-fsharp", branch = "develop", files = {"src/scanner.cc", "src/parser.c"}, generate_requires_npm = true, requires_generate_from_grammar = true}, filetype = "fsharp"}
 local function _1_()
   require("ionide").setup({})
