@@ -15,13 +15,10 @@
                 :rcarriga/nvim-notify
                 :nvim-telescope/telescope.nvim]
  :lazy false
- :keys {{1 :<leader>ns
-          2 "<cmd>Noice telescope<cr>"
-          :desc "Search message log"} {1 :<leader>nv
-                                                                                                     2 :<cmd>Noice<cr>
-                                                                                                     :desc "View message log"}}
+ :keys [{1 :<leader>ns 2 "<cmd>Noice telescope<cr>" :desc "Search message log"}
+        {1 :<leader>nv 2 :<cmd>Noice<cr> :desc "View message log"}]
  :opt noice_config
- :config (fn []
+ :config (lambda []
            ((. (require :noice) :setup) noice_config)
            ((. (require :notify) :setup) notify_config)
            ((. (require :telescope) :load_extension) :noice))}

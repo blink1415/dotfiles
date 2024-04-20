@@ -1,13 +1,14 @@
--- :fennel:1713383605
-local config
+-- :fennel:1713549794
+local opt
 local function _1_()
-  return (vim.o.columns * 0.5)
+  return (_G.vim.o.columns * 0.5)
 end
 local function _2_(term)
+  _G.assert((nil ~= term), "Missing argument term on plugins/toggleterm.fnl:4")
   return term.name
 end
-config = {direction = "float", size = _1_, autochdir = true, winbar = {enabled = true, name_formatter = _2_}, open_mapping = "<c-o>", terminal_mappings = true}
+opt = {direction = "float", size = _1_, autochdir = true, winbar = {enabled = true, name_formatter = _2_}, open_mapping = "<c-o>", terminal_mappings = true}
 local function _3_()
-  return require("toggleterm").setup(config)
+  return require("toggleterm").setup(opt)
 end
 return {"akinsho/toggleterm.nvim", lazy = true, keys = {{"<c-o>", "<cmd>ToggleTerm<cr>", desc = "Toggle term"}}, config = _3_}

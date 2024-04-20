@@ -1,5 +1,5 @@
 {1 :ggandor/leap.nvim
  :event :BufEnter
- :config (fn []
+ :config (lambda []
            ((. (require :leap) :add_default_mappings)))}
 

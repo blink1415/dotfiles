@@ -20,7 +20,7 @@ local config = function()
 		git_add = utils.get_highlight("diffAdded").fg,
 		git_change = utils.get_highlight("diffChanged").fg,
 	}
-	require('heirline').load_colors(colors)
+	require("heirline").load_colors(colors)
 
 	local Align = {
 		provider = "%=",
@@ -42,15 +42,15 @@ local config = function()
 		init = function(self)
 			local filename = self.filename
 			local extension = vim.fn.fnamemodify(filename, ":e")
-			self.icon, self.icon_color = require("nvim-web-devicons").get_icon_color(filename, extension,
-				{ default = true })
+			self.icon, self.icon_color =
+				require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 		end,
 		provider = function(self)
 			return self.icon and (self.icon .. " ")
 		end,
 		hl = function(self)
 			return { fg = self.icon_color }
-		end
+		end,
 	}
 
 	local FileName = {
@@ -58,7 +58,9 @@ local config = function()
 			-- first, trim the pattern relative to the current directory. For other
 			-- options, see :h filename-modifers
 			local filename = vim.fn.fnamemodify(self.filename, ":.")
-			if filename == "" then return "[No Name]" end
+			if filename == "" then
+				return "[No Name]"
+			end
 			-- now, if the filename would occupy more than 1/4th of the available
 			-- space, we trim the file path to its initials
 			-- See Flexible Components section below for dynamic truncation
@@ -102,11 +104,12 @@ local config = function()
 	}
 
 	-- let's add the children to our FileNameBlock component
-	FileNameBlock = utils.insert(FileNameBlock,
+	FileNameBlock = utils.insert(
+		FileNameBlock,
 		FileIcon,
 		utils.insert(FileNameModifer, FileName), -- a new table where FileName is a child of FileNameModifier
 		FileFlags,
-		{ provider = '%<' }        -- this means that the statusline is cut here when there's not enough space
+		{ provider = "%<" } -- this means that the statusline is cut here when there's not enough space
 	)
 
 	local ViMode = {
@@ -121,7 +124,7 @@ local config = function()
 			if not self.once then
 				vim.api.nvim_create_autocmd("ModeChanged", {
 					pattern = "*:*o",
-					command = 'redrawstatus'
+					command = "redrawstatus",
 				})
 				self.once = true
 			end
@@ -180,7 +183,7 @@ local config = function()
 				r = "orange",
 				["!"] = "red",
 				t = "red",
-			}
+			},
 		},
 		-- We can now access the value of mode() that, by now, would have been
 		-- computed by `init()` and use it to index our strings dictionary.
@@ -195,7 +198,7 @@ local config = function()
 		-- Same goes for the highlight. Now the foreground will change according to the current mode.
 		hl = function(self)
 			local mode = self.mode:sub(1, 1) -- get only the first mode character
-			return { fg = self.mode_colors[mode], bold = true, }
+			return { fg = self.mode_colors[mode], bold = true }
 		end,
 		-- Re-evaluate the component only on ModeChanged event!
 		-- This is not required in any way, but it's there, and it's a small
@@ -208,16 +211,16 @@ local config = function()
 
 	local LSPActive = {
 		condition = conditions.lsp_attached,
-		update    = { 'LspAttach', 'LspDetach' },
+		update = { "LspAttach", "LspDetach" },
 
-		provider  = function()
+		provider = function()
 			local names = {}
 			for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
 				table.insert(names, server.name)
 			end
 			return "  " .. table.concat(names, ", ")
 		end,
-		hl        = { fg = "green", bold = true },
+		hl = { fg = "green", bold = true },
 	}
 
 	vim.fn.sign_define("DiagnosticSignError", { text = "✗" })
@@ -276,25 +279,25 @@ local config = function()
 
 		init = function(self)
 			self.status_dict = vim.b.gitsigns_status_dict
-			self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or
-			    self.status_dict.changed ~= 0
+			self.has_changes = self.status_dict.added ~= 0
+				or self.status_dict.removed ~= 0
+				or self.status_dict.changed ~= 0
 		end,
 
 		hl = { fg = "orange" },
-
 
 		{ -- git branch name
 			provider = function(self)
 				return " " .. self.status_dict.head
 			end,
-			hl = { bold = true }
+			hl = { bold = true },
 		},
 		-- You could handle delimiters, icons and counts similar to Diagnostics
 		{
 			condition = function(self)
 				return self.has_changes
 			end,
-			provider = "("
+			provider = "(",
 		},
 		{
 			provider = function(self)
@@ -325,12 +328,18 @@ local config = function()
 		},
 	}
 
-
 	local statusline = {
-		ViMode, Space, Git, Space, FileNameBlock, Align, LSPActive, Space, Diagnostics,
-		Space
+		ViMode,
+		Space,
+		Git,
+		Space,
+		FileNameBlock,
+		Align,
+		LSPActive,
+		Space,
+		Diagnostics,
+		Space,
 	}
-
 
 	require("heirline").setup({
 		statusline = statusline,
@@ -339,7 +348,6 @@ local config = function()
 	vim.o.showtabline = 0
 	vim.cmd([[au FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif]])
 end
-
 
 return {
 	"rebelot/heirline.nvim",
@@ -350,5 +358,5 @@ return {
 	},
 	enabled = true,
 
-	config = config
+	config = config,
 }

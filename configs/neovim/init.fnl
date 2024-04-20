@@ -1,3 +1,4 @@
+(local vim _G.vim)
 (let [lazypath (.. (vim.fn.stdpath :data) :/lazy/lazy.nvim)]
   (when (not (vim.loop.fs_stat lazypath))
     (vim.fn.system [:git
@@ -8,7 +9,48 @@
                     lazypath]))
   (vim.opt.runtimepath:prepend lazypath))
 
-(local lazy (require :lazy))
+(local map vim.keymap.set)
 
-(lazy.setup [{:import :plugins}])
+(set vim.g.mapleader " ")
+(set vim.g.maplocalleader " ")
+(set vim.o.hlsearch false)
+(set vim.wo.number true)
+(set vim.o.mouse :a)
+(set vim.o.breakindent true)
+(set vim.o.undofile true)
+(set vim.o.ignorecase true)
+(set vim.o.smartcase true)
+(set vim.o.updatetime 250)
+(set vim.wo.signcolumn :yes)
+(set vim.o.termguicolors true)
+(set vim.o.completeopt "menuone,noselect")
+(set vim.o.laststatus 3)
+(set vim.o.cursorline 1)
+(set vim.o.tabstop 4)
+(set vim.o.shiftwidth 4)
+
+(map :n :<Space> :<Nop> {:silent true})
+(map :n :k "v:count == 0 ? 'gk' : 'k'" {:expr true :silent true})
+(map :n :j "v:count == 0 ? 'gj' : 'j'" {:expr true :silent true})
+(map :n :q :<Nop> {:silent true})
+(map :v :x "'d'" {:expr true :silent true})
+(map :n :<leader>1 vim.diagnostic.goto_prev {:desc "Go to previous diagnostic"})
+(map :n :<leader>2 vim.diagnostic.goto_next {:desc "Go to next diagnostic"})
+(map :n :<leader>k vim.diagnostic.open_float {:desc "Float diagnostic"})
+(map :n :<leader>q vim.diagnostic.setloclist {:desc "Open diagnostic list"})
+(map :n :<S-h> :<C-o> {:noremap true :silent true})
+(map :n :<S-l> :<C-i> {:noremap true :silent true})
+(map :n :<leader>w :viw {:noremap true :silent true})
+
+(vim.cmd "set clipboard+=unnamedplus")
+
+(set _G.Rename_tmux_pane
+     (fn []
+       (local cd (vim.fn.fnamemodify (vim.fn.expand "%:p:h") ":t"))
+       (vim.api.nvim_command (.. "silent !tmux rename-window '" cd "'"))))
+
+(vim.api.nvim_command "autocmd DirChanged * lua Rename_tmux_pane()")
+
+(local lazy (require :lazy))
+(lazy.setup [{:import :plugins} {:import :ftplugins} :tpope/vim-sensible])
 

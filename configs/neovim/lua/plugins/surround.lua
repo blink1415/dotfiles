@@ -1,2 +1,2 @@
--- :fennel:1713383605
-return {"kylechui/nvim-surround", version = "*", event = "VeryLazy", opt = {}}
+-- :fennel:1713548589
+return {"kylechui/nvim-surround", version = "*", event = "VeryLazy"}

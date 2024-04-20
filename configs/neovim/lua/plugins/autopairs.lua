@@ -1,2 +1,2 @@
--- :fennel:1713383605
-return {"altermo/ultimate-autopair.nvim", lazy = true, event = {"InsertEnter", "CmdlineEnter"}, opts = {}}
+-- :fennel:1713452208
+return {"altermo/ultimate-autopair.nvim", lazy = true, event = {"InsertEnter", "CmdlineEnter"}}

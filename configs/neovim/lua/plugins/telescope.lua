@@ -48,8 +48,5 @@ return {
 		vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "Search current word" })
 		vim.keymap.set("n", "<leader>g", require("telescope.builtin").live_grep, { desc = "Search by grep" })
 		vim.keymap.set("n", "<leader>p", "<cmd>Telescope projects<cr>", { desc = "Search projects" })
-
-		-- vim.api.nvim_exec([[autocmd BufEnter * if argc() == 0 | execute 'Telescope projects' | endif]], false)
-		-- ... existing configuration ...
 	end,
 }

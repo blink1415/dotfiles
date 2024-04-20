@@ -11,10 +11,10 @@
                 :nvim-treesitter/nvim-treesitter]
  :lazy true
  :event :VeryLazy
- :enabled false
  :ft [:fs :fsproj]
- :init (fn []
-         (local parser_config
-                (. (require :nvim-treesitter.parsers) :get_parser_configs))
-         (tset parser_config :fsharp fsharp_config))}
+ :config (fn []
+           ((. (require :ionide) :setup) {})
+           (local parser_configs
+                  ((. (require :nvim-treesitter.parsers) :get_parser_configs)))
+           (set parser_configs.fsharp fsharp_config))}
 

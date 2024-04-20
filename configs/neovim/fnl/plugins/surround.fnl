@@ -1,2 +1,2 @@
-{1 :kylechui/nvim-surround :version "*" :event :VeryLazy :opt {}}
+{1 :kylechui/nvim-surround :version "*" :event :VeryLazy}
 
