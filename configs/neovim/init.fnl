@@ -52,5 +52,9 @@
 (vim.api.nvim_command "autocmd DirChanged * lua Rename_tmux_pane()")
 
 (local lazy (require :lazy))
-(lazy.setup [{:import :plugins} {:import :ftplugins} :tpope/vim-sensible])
+(lazy.setup [{:import :plugins}
+             {:import :ftplugins}
+             [:tpope/vim-sensible
+              :udayvir-singh/hibiscus.nvim
+              :udayvir-singh/tangerine.nvim]])
 

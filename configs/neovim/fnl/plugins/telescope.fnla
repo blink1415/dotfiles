@@ -1,4 +1,3 @@
-(import-macros {: augroup!} :hibiscus.vim)
 (local map _G.vim.keymap.set)
 
 {1 :nvim-telescope/telescope.nvim
@@ -9,9 +8,9 @@
  :priority 10000
  :init (fn []
          (local actions (require :telescope.actions))
-         ((. (require :telescope) :setup) {:defaults {:mappings {:i {[:<C-j>] (actions.move_selection_next)
-                                                                     [:<C-k>] (actions.move_selection_previous)
-                                                                     [:<esc>] (actions.close)}}}})
+         ((. (require :telescope) :setup) {:defaults {:mappings {:i {[:<C-j>] actions.move_selection_next
+                                                                     [:<C-k>] actions.move_selection_previous
+                                                                     [:<esc>] actions.close}}}})
          ((. (require :project_nvim) :setup) {:detection_methods [:pattern]
                                               :patterns [:.git]
                                               :ignore_lsp {}
@@ -19,27 +18,16 @@
                                               :show_hidden false
                                               :silent_chdir true
                                               :scope_chdir :global
-                                              :datapath ((. (require :vim.fn)
-                                                            :stdpath) :data)})
-         (map :n :<leader><space> ((require :telescope.builtin) :buffers)
-              {:desc "Find existing buffers"})
-         (map :n :<leader>/
-              (fn []
-                ((require :telescope.builtin) :current_buffer_fuzzy_find)
-                ((require :telescope.themes) :get_dropdown
-                                             {:winblend 10 :previewer false}))
-              {:desc "[/] Fuzzily search in current buffer]"})
-         (map :n :<leader>f ((require :telescope.builtin) :find_files)
-              {:desc "Search files"})
-         (map :n :<leader>sh ((require :telescope.builtin) :help_tags)
-              {:desc "Search help"})
-         (map :n :<leader>sw ((require :telescope.builtin) :grep_string)
-              {:desc "Search current word"})
-         (map :n :<leader>g ((require :telescope.builtin) :live_grep)
-              {:desc "Search by grep"})
-         (map :n :<leader>p "<cmd>Telescope projects<cr>"
-              {:desc "Search projects"}) ; (if (= 0 (length arg)) ;     (augroup! :BufEnter [[:once :BufEnter] * "Telescope projects"]))
-         )}
+                                              :datapath (_G.vim.fn.stdpath :data)})
+         (map :n :<leader><space> (. (require :telescope.builtin) :buffers)) ; (map :n :<leader>/ ;      (fn [] ;        ((. (require :telescope.builtin) :current_buffer_fuzzy_find) (. (require :telescope.themes)
+         ;                                                                        :get_dropdown
+         ;                                                                        {:winblend 10
+         ;                                                                         :previewer false}))))
+         (map :n :<leader>f (. (require :telescope.builtin) :find_files))
+         (map :n :<leader>sh (. (require :telescope.builtin) :help_tags))
+         (map :n :<leader>sw (. (require :telescope.builtin) :grep_string))
+         (map :n :<leader>g (. (require :telescope.builtin) :live_grep))
+         (map :n :<leader>p "<cmd>Telescope projects<cr>"))}
 
 ; return {
 ; 	"nvim-telescope/telescope.nvim",

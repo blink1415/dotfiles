@@ -1,2 +1,2 @@
--- :fennel:1713652954
+-- :fennel:1713653077
 return {"numToStr/Comment.nvim", lazy = true, event = "VeryLazy", opts = {mappings = {basic = true, extra = false}, toggler = {line = "<leader>c", block = "<leader>b"}, opleader = {line = "<leader>c", block = "<leader>b"}}}

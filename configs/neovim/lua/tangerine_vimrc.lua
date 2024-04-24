@@ -1,4 +1,4 @@
--- :fennel:1713652954
+-- :fennel:1713653722
 local vim = _G.vim
 do
   local lazypath = (vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
@@ -46,4 +46,4 @@ end
 _G.Rename_tmux_pane = _2_
 vim.api.nvim_command("autocmd DirChanged * lua Rename_tmux_pane()")
 local lazy = require("lazy")
-return lazy.setup({{import = "plugins"}, {import = "ftplugins"}, "tpope/vim-sensible"})
+return lazy.setup({{import = "plugins"}, {import = "ftplugins"}, {"tpope/vim-sensible", "udayvir-singh/hibiscus.nvim", "udayvir-singh/tangerine.nvim"}})

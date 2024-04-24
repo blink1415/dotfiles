@@ -1,4 +1,4 @@
--- :fennel:1713652954
+-- :fennel:1713653077
 local opt = {ensure_installed = {"c", "cpp", "go", "lua", "python", "rust", "javascript", "typescript", "vim", "php", "sql", "java", "fennel", "terraform", "haskell"}, highlight = {enable = true}}
 local function _1_()
   require("nvim-treesitter.install").update({with_sync = true})
