@@ -1,4 +1,4 @@
--- :fennel:1713653722
+-- :fennel:1713977843
 local vim = _G.vim
 do
   local lazypath = (vim.fn.stdpath("data") .. "/lazy/lazy.nvim")

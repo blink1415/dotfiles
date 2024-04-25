@@ -1,4 +1,4 @@
--- :fennel:1713653596
+-- :fennel:1713977843
 local function _1_()
   require("go").setup({test_runner = "gotestsum", run_in_floaterm = true})
   return require("lspconfig").gopls.setup({settings = {gopls = {gofumpt = true}}})
