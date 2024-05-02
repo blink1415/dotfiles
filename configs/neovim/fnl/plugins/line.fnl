@@ -134,66 +134,49 @@
 ;          (lambda [self]
 ;            {:fg (self.mode_colors (self.mode:sub 1 1)) :bold true})))
 ;
-; (local LSPActive {:condition (lambda []
-; 							   (local conditions (require :heirline.conditions))
-; 							   (conditions.lsp_attached))
-; 				  :update ["LspAttach" "LspDetach"]
-; 				  :provider (lambda []
-; 							  (local names [])
-; 							  (each [_ server] (pairs
-; 											   (vim.lsp.get_active_clients
-; 												{:bufnr 0}))]
-; 								(table.insert names server.name))
-; 							  (.. "  " (table.concat names ", ")))
-; 				  :hl {:fg "green" :bold true}})
-; ; 	local LSPActive = {
-; ; 		condition = conditions.lsp_attached,
-; ; 		update    = { 'LspAttach', 'LspDetach' },
-; ;
-; ; 		provider  = function()
-; ; 			local names = {}
-; ; 			for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
-; ; 				table.insert(names, server.name)
-; ; 			end
-; ; 			return "  " .. table.concat(names, ", ")
-; ; 		end,
-; ; 		hl        = { fg = "green", bold = true },
-; ; 	}
+; (local LSPActive (lambda [conditions]
+;                    {:condition conditions.lsp_attached
+;                     :update [:LspAttach :LspDetach]
+;                     :provider (fn []
+;                                 (local names [])
+;                                 (each [_ server (pairs (vim.lsp.get_active_clients {:bufnr 0}))]
+;                                   (table.insert names server.name))
+;                                 (.. "  " (table.concat names ", ")))
+;                     :hl {:fg :green :bold true}}))
 ;
-; (local config
-;        (lambda []
-;          (local conditions (require :heirline.conditions))
-;          (local utils (require :heirline.utils))
-;          ((. (require :heirline) :load_colors) (colors utils)) ; Statusline Components
-;          (var FileNameBlock
-;               (utils.insert FileNameBlock FileIcon
-;                             (utils.insert FileNameModifier FileName) FileFlags
-;                             {:provider "%<"}))
-;          (set vim.o.showtabline 0)
-;          (vim.cmd "au FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif")))
+; ; (local Diagnostics (lambda [conditions] {
+; ; 					 :condition conditions.has_diagnostics
+; ; 					 }))
 ;
-; ;
-; ; local config = function()
-; ;
-; ;
-; ; 	local LSPActive = {
-; ; 		condition = conditions.lsp_attached,
-; ; 		update    = { 'LspAttach', 'LspDetach' },
-; ;
-; ; 		provider  = function()
-; ; 			local names = {}
-; ; 			for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
-; ; 				table.insert(names, server.name)
-; ; 			end
-; ; 			return "  " .. table.concat(names, ", ")
-; ; 		end,
-; ; 		hl        = { fg = "green", bold = true },
-; ; 	}
-; ;
-; ; 	vim.fn.sign_define("DiagnosticSignError", { text = "✗" })
-; ; 	vim.fn.sign_define("DiagnosticSignWarn", { text = "⚠" })
-; ; 	vim.fn.sign_define("DiagnosticSignInfo", { text = "ℹ" })
-; ; 	vim.fn.sign_define("DiagnosticSignHint", { text = "✔" })
+; (local Diagnostics (lambda [conditions] {
+;   :condition conditions.has_diagnostics
+;    :static {:error_icon (. (. (vim.fn.sign_getdefined "DiagnosticSignError") 1) :text)
+;             :warn_icon (. (. (vim.fn.sign_getdefined "DiagnosticSignWarn") 1) :text)
+;             :info_icon (. (. (vim.fn.sign_getdefined "DiagnosticSignInfo") 1) :text)
+;             :hint_icon (. (. (vim.fn.sign_getdefined "DiagnosticSignHint") 1) :text)}
+;    :init (fn [self]
+;            (set self "errors" (# (vim.diagnostic.get 0 {:severity vim.diagnostic.severity.ERROR})))
+;            (set self "warnings" (# (vim.diagnostic.get 0 {:severity vim.diagnostic.severity.WARN})))
+;            (set self "hints" (# (vim.diagnostic.get 0 {:severity vim.diagnostic.severity.HINT})))
+;            (set self "info" (# (vim.diagnostic.get 0 {:severity vim.diagnostic.severity.INFO}))))
+;    :update ["DiagnosticChanged" "BufEnter"]
+;    [{:provider (fn [self]
+;                  (when (> self.errors 0)
+;                    (.. self.error_icon self.errors " ")))
+;      :hl {:fg "diag_error"}}
+;     {:provider (fn [self]
+;                  (when (> self.warnings 0)
+;                    (.. self.warn_icon self.warnings " ")))
+;      :hl {:fg "diag_warn"}}
+;     {:provider (fn [self]
+;                  (when (> self.info 0)
+;                    (.. self.info_icon self.info " ")))
+;      :hl {:fg "diag_info"}}
+;     {:provider (fn [self]
+;                  (when (> self.hints 0)
+;                    (.. self.hint_icon self.hints)))
+;      :hl {:fg "diag_hint"}}]})
+;
 ; ; 	local Diagnostics = {
 ; ;
 ; ; 		condition = conditions.has_diagnostics,
@@ -240,6 +223,28 @@
 ; ; 			hl = { fg = "diag_hint" },
 ; ; 		},
 ; ; 	}
+;
+; (local config
+;        (lambda []
+;          (local conditions (require :heirline.conditions))
+;          (local utils (require :heirline.utils))
+;          ((. (require :heirline) :load_colors) (colors utils)) ; Statusline Components
+;          (var FileNameBlock
+;               (utils.insert FileNameBlock FileIcon
+;                             (utils.insert FileNameModifier FileName) FileFlags
+;                             {:provider "%<"}))
+;          (set vim.o.showtabline 0)
+;          (vim.cmd "au FileType * if index(['wipe', 'delete'], &bufhidden) >= 0 | set nobuflisted | endif")
+;          (vim.fn.sign_define :DiagnosticSignError {:text "✗"})
+;          (vim.fn.sign_define :DiagnosticSignWarn {:text "⚠"})
+;          (vim.fn.sign_define :DiagnosticSignInfo {:text "ℹ"})
+;          (vim.fn.sign_define :DiagnosticSignHint {:text "✔"})))
+;
+; ;
+; ; local config = function()
+; ;
+; ;
+; ;
 ; ;
 ; ; 	local Git = {
 ; ; 		condition = conditions.is_git_repo,
@@ -307,10 +312,11 @@
 ; ; 	})
 ; ; end
 ; ;
-;
-; {1 :rebelot/heirline.nvim
-;  :event :BufEnter
-;  :dependencies [:rebelot/kanagawa.nvim :nvim-tree/nvim-web-devicons]
-;  : config}
+; ;
+; ; {1 :rebelot/heirline.nvim
+; ;  :event :BufEnter
+; ;  :dependencies [:rebelot/kanagawa.nvim :nvim-tree/nvim-web-devicons]
+; ;  : config}
+; ;
 ;
 

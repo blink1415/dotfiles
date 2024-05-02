@@ -184,5 +184,4 @@ return {
 			lsp.setup()
 		end,
 	},
-	{ "rafamadriz/friendly-snippets" },
 }

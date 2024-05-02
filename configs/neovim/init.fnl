@@ -25,7 +25,7 @@
 (set vim.o.termguicolors true)
 (set vim.o.completeopt "menuone,noselect")
 (set vim.o.laststatus 3)
-(set vim.o.cursorline 1)
+(set vim.o.cursorline true)
 (set vim.o.tabstop 4)
 (set vim.o.shiftwidth 4)
 
@@ -53,6 +53,7 @@
 
 (local lazy (require :lazy))
 (lazy.setup [{:import :plugins}
+             {:import :plugins.themes}
              {:import :ftplugins}
              [:tpope/vim-sensible
               :udayvir-singh/hibiscus.nvim

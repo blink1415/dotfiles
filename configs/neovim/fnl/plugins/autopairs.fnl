@@ -1,4 +1,6 @@
 {1 :altermo/ultimate-autopair.nvim
  :lazy true
- :event [:InsertEnter :CmdlineEnter]}
+ :branch :v0.6
+ :event [:InsertEnter :CmdlineEnter]
+ :opts {}}
 

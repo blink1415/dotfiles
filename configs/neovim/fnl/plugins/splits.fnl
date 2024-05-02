@@ -17,5 +17,5 @@
          2 :<cmd>SmartCursorMoveRight<cr>
          :mode :n
          :desc "Move cursor to a pane to the right"}]
- :opt {:multiplexer_integration :tmux}}
+ :opts {:multiplexer_integration :tmux}}
 
