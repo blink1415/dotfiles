@@ -1,2 +1,2 @@
--- :fennel:1714076947
+-- :fennel:1714687446
 return {{"rafamadriz/friendly-snippets"}}

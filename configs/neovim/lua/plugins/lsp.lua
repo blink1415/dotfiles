@@ -22,6 +22,7 @@ return {
 
 			-- Formatting
 			"stevearc/conform.nvim",
+			"zapling/mason-conform.nvim",
 		},
 		config = function()
 			local lsp = require("lsp-zero").preset({})
@@ -112,10 +113,12 @@ return {
 				},
 			})
 
-			-- (Optional) Configure lua language server for neovim
-			require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+			require("mason-conform").setup()
 
 			local lspconfig = require("lspconfig")
+			-- (Optional) Configure lua language server for neovim
+			lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+
 			require("lspconfig.configs").fennel_language_server = {
 				default_config = {
 					-- replace it with true path
@@ -143,7 +146,6 @@ return {
 			-- You need to setup `cmp` after lsp-zero
 			local cmp = require("cmp")
 			local cmp_action = require("lsp-zero").cmp_action()
-			require("lspkind")
 
 			cmp.setup({
 				mapping = {

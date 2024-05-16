@@ -11,7 +11,7 @@
                 :nvim-treesitter/nvim-treesitter]
  :lazy true
  :event :VeryLazy
- :ft [:fs :fsproj]
+ :ft [:fs :fsproj :fsx]
  :config (fn []
            ((. (require :ionide) :setup) {})
            (local parser_configs

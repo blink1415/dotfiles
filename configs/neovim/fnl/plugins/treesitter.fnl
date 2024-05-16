@@ -16,8 +16,7 @@
             :highlight {:enable true}})
 
 {1 :nvim-treesitter/nvim-treesitter
- :dependencies [:nvim-treesitter/nvim-treesitter-textobjects
-                :nvim-treesitter/nvim-treesitter-context]
+ :dependencies [:nvim-treesitter/nvim-treesitter-textobjects]
  :lazy true
  :event :BufEnter
  :config (lambda []

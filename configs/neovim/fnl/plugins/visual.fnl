@@ -1,7 +1,8 @@
 {1 :00sapo/visual.nvim
  :dependencies [:nvim-treesitter :nvim-treesitter-textobjects]
  :event :BufEnter
- :opts {:treesitter_textobjects true
+ :commit :3f17076e82517d52b6f087ae0a231d15875b57b7
+ :opts {:treesitter_textobjects false
         :serendipity {:highlight "guibg=LightSteelBlue guifg=none"}
         :commands {:move_up_then_normal {:amend true}
                    :move_down_then_normal {:amend true}
