@@ -1,4 +1,4 @@
--- :fennel:1714687446
+-- :fennel:1720430473
 local vim = _G.vim
 do
   local lazypath = (vim.fn.stdpath("data") .. "/lazy/lazy.nvim")
@@ -15,6 +15,7 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.mouse = "a"
 vim.o.breakindent = true
+vim.o.autoindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -22,10 +23,10 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = "yes"
 vim.o.termguicolors = true
 vim.o.completeopt = "menuone,noselect"
-vim.o.laststatus = 3
 vim.o.cursorline = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.o.conceallevel = 0
 map("n", "<Space>", "<Nop>", {silent = true})
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", {expr = true, silent = true})
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = true})

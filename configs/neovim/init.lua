@@ -1,3 +1,4 @@
+-- This file is only used to bootstrap fennel
 local function bootstrap(url, ref)
 	local name = url:gsub(".*/", "")
 	local path = vim.fn.stdpath([[data]]) .. "/lazy/" .. name
@@ -20,7 +21,7 @@ bootstrap("https://github.com/udayvir-singh/hibiscus.nvim", "v1.7")
 bootstrap("https://github.com/udayvir-singh/tangerine.nvim")
 
 require("tangerine").setup({
-	-- target = vim.fn.stdpath([[data]]) .. "/tangerine",
+	target = vim.fn.stdpath([[config]]) .. "/lua",
 	compiler = {
 		-- disable popup showing compiled files
 		verbose = false,

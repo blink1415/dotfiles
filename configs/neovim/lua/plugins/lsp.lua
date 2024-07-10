@@ -1,189 +1,60 @@
-return {
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		event = "BufEnter",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			{
-				"williamboman/mason.nvim",
-				build = function()
-					pcall(vim.cmd, "MasonUpdate")
-				end,
-			},
-			"williamboman/mason-lspconfig.nvim",
-			"nvim-telescope/telescope.nvim",
-
-			-- Completion
-			"hrsh7th/nvim-cmp",
-			"hrsh7th/cmp-nvim-lsp",
-			"L3MON4D3/LuaSnip",
-			"onsails/lspkind.nvim",
-
-			-- Formatting
-			"stevearc/conform.nvim",
-			"zapling/mason-conform.nvim",
-		},
-		config = function()
-			local lsp = require("lsp-zero").preset({})
-
-			lsp.on_attach(function(_, bufnr)
-				lsp.default_keymaps({
-					buffer = bufnr,
-				})
-
-				local desc = function(buf, desc)
-					return {
-						buffer = buf,
-						desc = desc,
-					}
-				end
-
-				vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", desc(true, "Get references"))
-
-				vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", desc(true, "Go to definition"))
-
-				vim.keymap.set(
-					"n",
-					"gD",
-					"<cmd>lua vim.lsp.buf.implementation()<cr>",
-					desc(true, "Go to implementation")
-				)
-
-				vim.keymap.set(
-					"n",
-					"<leader>lD",
-					"<cmd>lua vim.diagnostic.open_float()<cr>",
-					desc(true, "Open floating diagnostic")
-				)
-
-				vim.keymap.set(
-					"n",
-					"<leader>lf",
-					'<cmd>lua require("conform").format()<cr>',
-					desc(true, "Format buffer")
-				)
-
-				vim.keymap.set("n", "<leader>q", "<cmd>Telescope diagnostics<cr>", desc(true, "Search diagnostics"))
-
-				vim.keymap.set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc(true, "Code action"))
-
-				vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc(true, "Rename"))
-
-				vim.keymap.set(
-					"n",
-					"<leader>lk",
-					"<cmd>lua vim.diagnostic.goto_prev()<cr>",
-					desc(true, "Previous diagnostic")
-				)
-
-				vim.keymap.set(
-					"n",
-					"<leader>lj",
-					"<cmd>lua vim.diagnostic.goto_next()<cr>",
-					desc(true, "Next diagnostic")
-				)
-			end)
-
-			require("mason").setup({})
-			require("mason-lspconfig").setup({
-				-- Replace the language servers listed here
-				-- with the ones you want to install
-				ensure_installed = {},
-				handlers = {
-					lsp.default_setup,
-				},
-			})
-
-			require("conform").setup({
-				formatters_by_ft = {
-					lua = { "stylua" },
-					javascript = { { "prettierd", "prettier" } },
-					javascriptreact = { { "prettierd", "prettier" } },
-					typescript = { { "prettierd", "prettier" } },
-					typescriptreact = { { "prettierd", "prettier" } },
-					go = { { "gofumpt", "gofmt" } },
-					json = { "jq" },
-					fennel = { "fnlfmt" },
-					haskell = { { "ormolu", "formolu" } },
-				},
-				format_on_save = {
-					timeout_ms = 500,
-					lsp_fallback = true,
-				},
-			})
-
-			require("mason-conform").setup()
-
-			local lspconfig = require("lspconfig")
-			-- (Optional) Configure lua language server for neovim
-			lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-
-			require("lspconfig.configs").fennel_language_server = {
-				default_config = {
-					-- replace it with true path
-					cmd = { "/Users/nikolai/.local/share/nvim/mason/bin/fennel-language-server" },
-					filetypes = { "fennel" },
-					single_file_support = true,
-					-- source code resides in directory `fnl/`
-					root_dir = lspconfig.util.root_pattern("fnl"),
-					settings = {
-						fennel = {
-							workspace = {
-								-- If you are using hotpot.nvim or aniseed,
-								-- make the server aware of neovim runtime files.
-								library = vim.api.nvim_list_runtime_paths(),
-							},
-							diagnostics = {
-								globals = { "vim" },
-							},
-						},
-					},
-				},
-			}
-			-- lspconfig.fennel_language_server.setup({})
-
-			-- You need to setup `cmp` after lsp-zero
-			local cmp = require("cmp")
-			local cmp_action = require("lsp-zero").cmp_action()
-
-			cmp.setup({
-				mapping = {
-					-- `Enter` key to confirm completion
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-
-					-- Ctrl+Space to trigger completion menu
-					["<C-Space>"] = cmp.mapping.complete(),
-
-					["<C-j>"] = cmp.mapping.select_next_item(),
-					["<C-k>"] = cmp.mapping.select_prev_item(),
-
-					-- Navigate between snippet placeholder
-					["<C-f>"] = cmp_action.luasnip_jump_forward(),
-					["<C-b>"] = cmp_action.luasnip_jump_backward(),
-				},
-				window = {
-					completion = {
-						winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-						col_offset = -3,
-						side_padding = 0,
-					},
-				},
-				formatting = {
-					fields = { "kind", "abbr", "menu" },
-					format = function(entry, vim_item)
-						local kind =
-							require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-						local strings = vim.split(kind.kind, "%s", { trimempty = true })
-						kind.kind = " " .. (strings[1] or "") .. " "
-						kind.menu = "    (" .. (strings[2] or "") .. ")"
-
-						return kind
-					end,
-				},
-			})
-
-			lsp.setup()
-		end,
-	},
-}
+-- :fennel:1720637560
+local lsp_keymaps
+local function _1_()
+  local map = _G.vim.keymap.set
+  map("n", "gr", "<cmd>Telescope lsp_references<cr>")
+  map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
+  map("n", "gD", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+  map("n", "<leader>lD", "<cmd>lua vim.diagnostic.open_float()<cr>")
+  map("n", "<leader>lf", "<cmd>lua require('conform').format()<cr>")
+  map("n", "<leader>q", "<cmd>Telescope diagnostics<cr>")
+  map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+  map("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>")
+  map("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+  return map("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+end
+lsp_keymaps = _1_
+local conform_config = {formatters_by_ft = {lua = {"stylua"}, javascript = {{prettierd = "prettier"}}, javascriptreact = {{prettierd = "prettier"}}, typescript = {{prettierd = "prettier"}}, typescriptreact = {{prettierd = "prettier"}}, go = {{gofumpt = "gofmt"}}, json = {"jq"}, fennel = {"fnlfmt"}, haskell = {{ormolu = "formolu"}}}, format_on_save = {timeout_ms = 500, lsp_fallback = true}}
+local fennel_config
+local function _2_(lspconfig)
+  _G.assert((nil ~= lspconfig), "Missing argument lspconfig on plugins/lsp.fnl:28")
+  return {default_config = {cmd = {"/Users/nikolai/.local/share/nvim/mason/bin/fennel-language-server"}, filetypes = {"fennel"}, single_file_support = true, root_dir = lspconfig.util.root_pattern("fnl"), settings = {fennel = {workspace = {library = _G.vim.api.nvim_list_runtime_paths()}, diagnostics = {globals = {"vim"}}}}}}
+end
+fennel_config = _2_
+local cmp_config
+local function _3_(cmp)
+  _G.assert((nil ~= cmp), "Missing argument cmp on plugins/lsp.fnl:36")
+  local function _4_(entry, vim_item)
+    local kind_opts = {mode = "symbol_textlsp", maxwidth = 50}
+    local lspkind = require("lspkind")
+    local kind = lspkind.cmp_format(kind_opts)(entry, vim_item)
+    local strings = _G.vim.split(kind.kind, "%s", {trimempty = true})
+    kind.kind = ((" " .. (strings[1] or "")) .. " ")
+    kind.menu = (("    (" .. (strings[2] or "")) .. ")")
+    return kind
+  end
+  return {mapping = {["<CR>"] = cmp.mapping.confirm({select = true}), ["<C-Space>"] = cmp.mapping.complete(), ["<C-j>"] = cmp.mapping.select_next_item(), ["<C-k>"] = cmp.mapping.select_prev_item()}, window = {completion = {winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None", col_offset = -3, side_padding = 0}}, formatting = {fields = {"kind", "abbr", "menu"}, format = _4_}}
+end
+cmp_config = _3_
+local function _5_()
+  return pcall(_G.vim.cmd, "MasonUpdate")
+end
+local function _6_()
+  local lsp = require("lsp-zero").preset({})
+  local function _7_(_, bufnr)
+    _G.assert((nil ~= bufnr), "Missing argument bufnr on plugins/lsp.fnl:84")
+    lsp.default_keymaps({buffer = bufnr})
+    return lsp_keymaps()
+  end
+  lsp.on_attach(_7_)
+  require("mason").setup({})
+  require("mason-lspconfig").setup({ensure_installed = {}, handlers = {lsp.default_setup}})
+  require("conform").setup(conform_config)
+  local lspconfig = require("lspconfig")
+  lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+  lspconfig.fennel_language_server.setup(fennel_config(lspconfig))
+  local cmp = require("cmp")
+  cmp.setup(cmp_config(cmp))
+  return lsp.setup()
+end
+return {"VonHeikemen/lsp-zero.nvim", branch = "v3.x", event = "BufEnter", dependencies = {"neovim/nvim-lspconfig", {"williamboman/mason.nvim", build = _5_}, "williamboman/mason-lspconfig.nvim", "nvim-telescope/telescope.nvim", "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "onsails/lspkind.nvim", "stevearc/conform.nvim"}, config = _6_}
