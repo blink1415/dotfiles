@@ -14,6 +14,7 @@
 {1 :nvim-neo-tree/neo-tree.nvim
  :branch :v3.x
  :event :BufEnter
+ :enabled false
  :keys [{1 :<leader>e 2 "<cmd>Neotree toggle<cr>" :desc "Toggle Neotree"}]
  :dependencies [:nvim-lua/plenary.nvim
                 :nvim-tree/nvim-web-devicons
