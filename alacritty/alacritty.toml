@@ -1,0 +1,87 @@
+shell = "/opt/homebrew/bin/nu"
+
+[font]
+normal.family = "Hasklug Nerd Font"
+bold.family = "Hasklug Nerd Font"
+italic.family = "Hasklug Nerd Font"
+bold_italic.family = "Hasklug Nerd Font"
+size = 14.0
+
+[env]
+TERM = "xterm-256color"
+
+[colors.bright]
+black = '#8a8980'
+blue = '#6693bf'
+cyan = '#5e857a'
+green = '#6e915f'
+magenta = '#624c83'
+red = '#d7474b'
+white = '#43436c'
+yellow = '#836f4a'
+
+[colors.normal]
+black = '#1F1F28'
+blue = '#4d699b'
+cyan = '#597b75'
+green = '#6f894e'
+magenta = '#b35b79'
+red = '#c84053'
+white = '#545464'
+yellow = '#77713f'
+
+[colors.primary]
+background = '#f2ecbc'
+foreground = '#545464'
+dim_foreground = '#545464'
+bright_foreground = '#545464'
+
+[[colors.indexed_colors]]
+index = 16
+color = '#e98a00'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#e82424'
+#
+# [colors.primary]
+# background = '#1f1f28'
+# foreground = '#dcd7ba'
+#
+# [colors.normal]
+# black   = '#090618'
+# red     = '#c34043'
+# green   = '#76946a'
+# yellow  = '#c0a36e'
+# blue    = '#7e9cd8'
+# magenta = '#957fb8'
+# cyan    = '#6a9589'
+# white   = '#c8c093'
+#
+# [colors.bright]
+# black   = '#727169'
+# red     = '#e82424'
+# green   = '#98bb6c'
+# yellow  = '#e6c384'
+# blue    = '#7fb4ca'
+# magenta = '#938aa9'
+# cyan    = '#7aa89f'
+# white   = '#dcd7ba'
+#
+#
+# [[colors.indexed_colors]]
+# index = 16
+# color = '#ffa066'  # lotusOrange
+#
+# [[colors.indexed_colors]]
+# index = 17
+# color = '#ff5d62'  # lotusRed4
+
+[window]
+decorations = "None"
+
+[terminal]
+osc52 = "CopyPaste"
+
+[keyboard]
+bindings = []

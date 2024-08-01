@@ -1,22 +1,28 @@
-(local conform_config
-       {:formatters_by_ft {:lua [:stylua]
-                           :javascript [{:prettierd :prettier}]
-                           :javascriptreact [{:prettierd :prettier}]
-                           :typescript [{:prettierd :prettier}]
-                           :typescriptreact [{:prettierd :prettier}]
-                           :go [{:gofumpt :gofmt}]
-                           :json [:jq]
-                           :fennel [:fnlfmt]
-                           :haskell [{:ormolu :formolu}]}
-        :formatters {:uiua {:command [:uiua :fmt]}}})
-
 {1 :stevearc/conform.nvim
  :event :BufEnter
  :keys [{1 :<leader>lf
          2 "<cmd>lua require('conform').format()<cr>"
          :desc "Format buffer"}]
- :config (lambda []
-           (local conform (require :conform))
-           (conform.setup conform_config) ; (set conform.formatters.uiua {:command [:uiua :fmt]})
-           )}
+ :opts {:formatters_by_ft {:lua [:stylua]
+                           :javascript {1 :prettierd
+                                        2 :prettier
+                                        :stop_after_first true}
+                           :javascriptreact {0 :prettierd
+                                             1 :prettier
+                                             :stop_after_first true}
+                           :typescript {1 :prettierd
+                                        2 :prettier
+                                        :stop_after_first true}
+                           :typescriptreact {0 :prettierd
+                                             1 :prettier
+                                             :stop_after_first true}
+                           :go {1 :gofumpt 2 :gofmt :stop_after_first true}
+                           :xml [:xmlformatter]
+                           :json [:jq]
+                           :fennel [:fnlfmt]
+                           :haskell {1 :ormolu
+                                     2 :formolu
+                                     :stop_after_first true}}
+        :format_on_save {:lsp_format :fallback :timeout_ms 500}
+        :formatters {:uiua {:command :uiua :args [:fmt :$FILENAME]}}}}
 
