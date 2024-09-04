@@ -28,7 +28,8 @@
                                                      ")"))
                                             kind)}}))
 
-{1 :hrsh7th/nvim-cmp
+{1 :yioneko/nvim-cmp
+ :branch :perf
  :dependencies [:hrsh7th/cmp-nvim-lsp :neovim/nvim-lspconfig]
  :config (lambda []
            (local cmp (require :cmp))

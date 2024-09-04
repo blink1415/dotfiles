@@ -2,8 +2,7 @@
 
 {1 :nvim-telescope/telescope.nvim
  :tag :0.1.6
- :dependencies [:nvim-lua/plenary.nvim
-                {:dir :/Users/nikolai/personal/project.nvim}]
+ :dependencies [:nvim-lua/plenary.nvim :blink1415/project.nvim]
  :lazy false
  :priority 10000
  :init (lambda []
@@ -28,7 +27,7 @@
                   ((. (require :telescope.builtin) :current_buffer_fuzzy_find) fuzzy_opts)))
          (map :n :<leader>/ buffer_fuzzy_find)
          (map :n :<leader>f (. (require :telescope.builtin) :find_files))
-         (map :n :<leader>s (. (require :telescope.builtin) :grep_string))
+         (map :n :<leader>s "<cmd>Telescope git_status<cr>")
          (map :n :<leader>g (. (require :telescope.builtin) :live_grep))
          (map :n :<leader>p "<cmd>Telescope projects<cr>")
          (if (= (length (_G.vim.fn.argv)) 0)

@@ -81,9 +81,6 @@ alias gs="git status"
 alias gd="git diff"
 alias v="nvim"
 
-#-------------Starship----------------
- eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/.config/dotfiles/configs/starship/starship.toml
 
 #-------------SSH agent---------------
 [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"

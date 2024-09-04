@@ -16,12 +16,13 @@
                            :typescriptreact {0 :prettierd
                                              1 :prettier
                                              :stop_after_first true}
+                           :sql {1 :sqlfmt :stop_after_first true}
                            :go {1 :gofumpt 2 :gofmt :stop_after_first true}
                            :xml [:xmlformatter]
                            :json [:jq]
                            :fennel [:fnlfmt]
                            :haskell {1 :ormolu
-                                     2 :formolu
+                                     2 :fourmolu
                                      :stop_after_first true}}
         :format_on_save {:lsp_format :fallback :timeout_ms 500}
         :formatters {:uiua {:command :uiua :args [:fmt :$FILENAME]}}}}
