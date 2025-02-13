@@ -13,12 +13,14 @@
                                :fennel
                                :terraform
                                :haskell]
-            :highlight {:enable true}})
+            :highlight {:enable true}
+            :indent {:enable true}})
 
 {1 :nvim-treesitter/nvim-treesitter
  :dependencies [:nvim-treesitter/nvim-treesitter-textobjects]
+ :version "*"
  :lazy true
- :event :BufEnter
+ :event [:BufReadPost :BufNewFile]
  :config (lambda []
            ((. (require :nvim-treesitter.install) :update) {:with_sync true})
            ((. (require :nvim-treesitter.configs) :setup) opt)

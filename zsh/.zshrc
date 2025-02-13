@@ -12,7 +12,7 @@ git clone --depth 1 -- \
 https://github.com/marlonrichert/zsh-snap.git ~/.zsh/zsh-snap
 
 source ~/.zsh/zsh-snap/znap.zsh  # Start Znap
-#znap prompt sindresorhus/pure
+znap prompt sindresorhus/pure
 #
 ##-------------Plugins---------------
 #

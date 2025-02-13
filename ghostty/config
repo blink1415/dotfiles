@@ -1,0 +1,5 @@
+font-family = "Hasklug Nerd Font Mono"
+macos-titlebar-style = hidden
+theme = kanagawa-lotus
+minimum-contrast = 1.1
+window-padding-balance = true

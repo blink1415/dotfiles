@@ -30,10 +30,12 @@
 (set vim.o.shiftwidth 4)
 (set vim.o.conceallevel 0)
 
+; Enable LSP inlay hints
+(vim.lsp.inlay_hint.enable)
+
 (map :n :<Space> :<Nop> {:silent true})
 (map :n :k "v:count == 0 ? 'gk' : 'k'" {:expr true :silent true})
 (map :n :j "v:count == 0 ? 'gj' : 'j'" {:expr true :silent true})
-(map :n :q :<Nop> {:silent true})
 (map :v :x "'d'" {:expr true :silent true})
 (map :n :<leader>1 vim.diagnostic.goto_prev {:desc "Go to previous diagnostic"})
 (map :n :<leader>2 vim.diagnostic.goto_next {:desc "Go to next diagnostic"})
@@ -52,6 +54,14 @@
 
 (vim.api.nvim_command "autocmd DirChanged * lua Rename_tmux_pane()")
 
+(vim.api.nvim_create_autocmd :FileType
+                             {:pattern :gleam
+                              :callback (fn []
+                                          (set vim.opt_local.expandtab true)
+                                          (set vim.opt_local.shiftwidth 2)
+                                          (set vim.opt_local.tabstop 2)
+                                          (set vim.opt_local.softtabstop 2))})
+
 (local lazy (require :lazy))
 (lazy.setup [{:import :plugins}
              {:import :plugins.themes}
@@ -59,4 +69,3 @@
              [:tpope/vim-sensible
               :udayvir-singh/hibiscus.nvim
               :udayvir-singh/tangerine.nvim]])
-

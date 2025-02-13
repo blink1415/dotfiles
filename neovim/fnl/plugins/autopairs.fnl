@@ -1,6 +1,3 @@
-{1 :altermo/ultimate-autopair.nvim
- :lazy true
- :branch :v0.6
- :event [:InsertEnter :CmdlineEnter]
- :opts {}}
-
+{1 :windwp/nvim-autopairs
+ :event [:InsertEnter]
+ :opts {:disable_filetype [:TelescopePrompt :spectre_panel]}}

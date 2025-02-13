@@ -28,10 +28,19 @@
                                                      ")"))
                                             kind)}}))
 
-{1 :yioneko/nvim-cmp
- :branch :perf
- :dependencies [:hrsh7th/cmp-nvim-lsp :neovim/nvim-lspconfig]
- :config (lambda []
-           (local cmp (require :cmp))
-           (cmp.setup (cmp_config cmp)))}
-
+[{1 :yioneko/nvim-cmp
+  :branch :perf
+  :dependencies [:hrsh7th/cmp-nvim-lsp :neovim/nvim-lspconfig]
+  :event :InsertEnter
+  :enabled true
+  :config (lambda []
+            (local cmp (require :cmp))
+            (cmp.setup (cmp_config cmp)))}
+ {; Still too early in development
+  1 :saghen/blink.cmp
+  :version "*"
+  :enabled false
+  :opts {:keymap {:preset :enter
+                  :<C-j> [:select_next :fallback]
+                  :<C-k> [:select_prev :fallback]
+                  :<C-d> [:show_documentation :fallback]}}}]

@@ -17,5 +17,3 @@
                            opts)
            (vim.keymap.set :n :<leader>lrq ht.repl.quit opts))}
 
-; }
-

@@ -1,6 +1,8 @@
 {1 :supermaven-inc/supermaven-nvim
- :enabled true
+ :lazy true
+ :event [:InsertEnter]
  :opts {:ignore_filetypes {:TelescopePrompt true
                            :TelescopeResults true
-                           :csv true}}}
-
+                           :csv true
+                           :json true
+                           :dbee true}}}

@@ -1,5 +1,5 @@
 (local opt {:direction :float
-            :size (fn [] (* _G.vim.o.columns 0.5))
+            :size (lambda [] (* _G.vim.o.columns 0.5))
             :autochdir true
             :winbar {:enabled true :name_formatter (lambda [term] term.name)}
             :open_mapping :<c-o>
@@ -8,6 +8,5 @@
 {1 :akinsho/toggleterm.nvim
  :lazy true
  :keys [{1 :<c-o> 2 :<cmd>ToggleTerm<cr> :desc "Toggle term"}]
- :config (fn []
+ :config (lambda []
            ((. (require :toggleterm) :setup) opt))}
-

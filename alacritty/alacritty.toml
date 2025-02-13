@@ -1,34 +1,71 @@
-shell = "/opt/homebrew/bin/nu"
 
 [font]
-normal.family = "Hasklug Nerd Font"
-bold.family = "Hasklug Nerd Font"
-italic.family = "Hasklug Nerd Font"
-bold_italic.family = "Hasklug Nerd Font"
+normal.family = "Hasklug Nerd Font Mono"
+bold.family = "Hasklug Nerd Font Mono"
+italic.family = "Hasklug Nerd Font Mono"
+bold_italic.family = "Hasklug Nerd Font Mono"
 size = 14.0
 
 [env]
 TERM = "xterm-256color"
 
+# Kanagawa Wave
+# [colors.primary]
+# background = '#1f1f28'
+# foreground = '#dcd7ba'
+# 
+# [colors.normal]
+# black=   '#090618'
+# red=     '#c34043'
+# green=   '#76946a'
+# yellow=  '#c0a36e'
+# blue=    '#7e9cd8'
+# magenta= '#957fb8'
+# cyan=    '#6a9589'
+# white=   '#c8c093'
+# 
+# [colors.bright]
+# black=   '#727169'
+# red=     '#e82424'
+# green=   '#98bb6c'
+# yellow=  '#e6c384'
+# blue=    '#7fb4ca'
+# magenta= '#938aa9'
+# cyan=    '#7aa89f'
+# white=   '#dcd7ba'
+# 
+# [colors.selection]
+# background= '#2d4f67'
+# foreground= '#c8c093'
+# 
+# [[colors.indexed_colors]]
+# index= 16
+# color= '#ffa066'
+# [[colors.indexed_colors]]
+# index= 17
+# color= '#ff5d62'
+
+
+# Kanagawa Lotus
 [colors.bright]
-black = '#8a8980'
-blue = '#6693bf'
-cyan = '#5e857a'
-green = '#6e915f'
+black =   '#8a8980'
+blue =    '#6693bf'
+cyan =    '#5e857a'
+green =   '#6e915f'
 magenta = '#624c83'
-red = '#d7474b'
-white = '#43436c'
-yellow = '#836f4a'
+red =     '#d7474b'
+white =   '#43436c'
+yellow =  '#836f4a'
 
 [colors.normal]
-black = '#1F1F28'
-blue = '#4d699b'
-cyan = '#597b75'
-green = '#6f894e'
+black =   '#1f1f28'
+blue =    '#4d699b'
+cyan =    '#597b75'
+green =   '#6f894e'
 magenta = '#b35b79'
-red = '#c84053'
-white = '#545464'
-yellow = '#77713f'
+red =     '#c84053'
+white =   '#545464'
+yellow =  '#77713f'
 
 [colors.primary]
 background = '#f2ecbc'
@@ -49,3 +86,6 @@ decorations = "None"
 
 [keyboard]
 bindings = []
+
+[terminal]
+shell = "/opt/homebrew/bin/nu"

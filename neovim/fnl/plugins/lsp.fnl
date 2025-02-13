@@ -17,7 +17,7 @@
  :event :BufEnter
  :dependencies [:neovim/nvim-lspconfig
                 {1 :williamboman/mason.nvim
-                 :build (fn []
+                 :build (lambda []
                           (pcall _G.vim.cmd :MasonUpdate))}
                 {1 :rachartier/tiny-code-action.nvim
                  :dependencies [:nvim-lua/plenary.nvim
@@ -38,7 +38,32 @@
            ((. (require :mason-lspconfig) :setup) {:ensure_installed []
                                                    :handlers [lsp.default_setup]})
            (local lspconfig (require :lspconfig))
-           (lspconfig.uiua.setup {:cmd [:uiua :lsp]})
+           (lspconfig.uiua.setup {})
+           (lspconfig.gleam.setup {})
+           (lspconfig.kotlin_language_server.setup {})
+           (lspconfig.fsautocomplete.setup {})
+           (lspconfig.rust_analyzer.setup {:settings {:hints {[:rust-analyzer] {:inlayHints {:bindingModeHints {:enable false}
+                                                                                             :chainingHints {:enable true}
+                                                                                             :closingBraceHints {:enable true
+                                                                                                                 :minLines 25}
+                                                                                             :closureReturnTypeHints {:enable :never}
+                                                                                             :lifetimeElisionHints {:enable :never
+                                                                                                                    :useParameterNames false}
+                                                                                             :maxLength 25
+                                                                                             :parameterHints {:enable true}
+                                                                                             :reborrowHints {:enable :never}
+                                                                                             :renderColons true
+                                                                                             :typeHints {:enable true
+                                                                                                         :hideClosureInitialization false
+                                                                                                         :hideNamedConstructor false}}}}}})
            (lspconfig.lua_ls.setup (lsp.nvim_lua_ls))
+           (lspconfig.gopls.setup {:settings {:gopls {:gofumpt true
+                                                      :local :go.axofinance.io
+                                                      :hints {:assignVariableTypes true
+                                                              :compositeLiteralFields true
+                                                              :compositeLiteralTypes true
+                                                              :constantValues true
+                                                              :functionTypeParameters true
+                                                              :parameterNames true
+                                                              :rangeVariableTypes true}}}})
            (lsp.setup))}
-

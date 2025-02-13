@@ -5,6 +5,7 @@
  :dependencies [:nvim-lua/plenary.nvim :blink1415/project.nvim]
  :lazy false
  :priority 10000
+ :opts {}
  :init (lambda []
          (local actions (require :telescope.actions))
          ((. (require :telescope) :setup) {:defaults {:mappings {:i {:<C-j> actions.move_selection_next
@@ -18,7 +19,6 @@
                                               :silent_chdir true
                                               :scope_chdir :global
                                               :datapath (_G.vim.fn.stdpath :data)})
-         (map :n :<leader><space> (. (require :telescope.builtin) :buffers))
          (local fuzzy_opts
                 ((. (require :telescope.themes) :get_dropdown) {:winblend 10
                                                                 :previewer false}))
@@ -26,11 +26,6 @@
                 (lambda []
                   ((. (require :telescope.builtin) :current_buffer_fuzzy_find) fuzzy_opts)))
          (map :n :<leader>/ buffer_fuzzy_find)
-         (map :n :<leader>f (. (require :telescope.builtin) :find_files))
-         (map :n :<leader>s "<cmd>Telescope git_status<cr>")
-         (map :n :<leader>g (. (require :telescope.builtin) :live_grep))
-         (map :n :<leader>p "<cmd>Telescope projects<cr>")
          (if (= (length (_G.vim.fn.argv)) 0)
              (do
                (_G.vim.defer_fn (fn [] (_G.vim.cmd "Telescope projects")) 0))))}
-
