@@ -20,9 +20,10 @@
          2 (lambda [] (_G.Snacks.picker.files))
          :desc "Find files"}
         {1 :<leader>g 2 (lambda [] (_G.Snacks.picker.grep)) :desc :Grep}
-        ; {1 :<leader>p
-        ;  2 (lambda [] (_G.Snacks.picker:projects))
-        ;  :desc "Find projects"}
+        {1 :<leader>p
+         2 (lambda []
+             (_G.Snacks.picker.projects {:win {:minimal false}}))
+         :desc "Find projects"}
         {1 :<leader>ss
          2 (lambda [] (_G.Snacks.picker.git_status))
          :desc "Find in git status"}

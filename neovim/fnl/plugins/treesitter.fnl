@@ -4,9 +4,10 @@
                                :lua
                                :python
                                :rust
+                               :gleam
+                               :elm
                                :javascript
                                :typescript
-                               :vim
                                :php
                                :sql
                                :java
@@ -31,4 +32,3 @@
                                 :files [:src/parser.c]
                                 :branch :main}
                  :filetype :plantuml}))}
-

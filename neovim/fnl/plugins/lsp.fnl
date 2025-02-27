@@ -38,6 +38,7 @@
            ((. (require :mason-lspconfig) :setup) {:ensure_installed []
                                                    :handlers [lsp.default_setup]})
            (local lspconfig (require :lspconfig))
+           (lspconfig.flix.setup {})
            (lspconfig.uiua.setup {})
            (lspconfig.gleam.setup {})
            (lspconfig.kotlin_language_server.setup {})
