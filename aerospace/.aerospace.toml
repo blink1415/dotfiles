@@ -18,7 +18,7 @@ outer.left =       20
 outer.right =      20
 
 [[on-window-detected]]
-if.app-id = 'org.mozilla.com.zen.browser'
+if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
@@ -38,8 +38,12 @@ if.app-id = 'com.jetbrains.datagrip'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
+if.app-id = 'com.usebruno.app'
 run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 6'
 
 [workspace-to-monitor-force-assignment]
 1 = 'main'

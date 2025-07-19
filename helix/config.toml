@@ -1,32 +1,77 @@
-theme = "kanagawa"
+theme = "kanso-pearl"
 
 [editor]
 line-number = "relative"
-bufferline = "multiple"
+bufferline = "never"
 cursorline = true
 color-modes = true
 popup-border = "all"
+completion-timeout = 5
+rulers = [140]
+# end-of-line-diagnostics = "warning"
+
+[editor.inline-blame]
+show = "cursor-line"
+auto-fetch = true
 
 [keys.normal]
 esc = ["collapse_selection", "keep_primary_selection"]
-H = ["goto_previous_buffer"]
-L = ["goto_next_buffer"]
-C-j = ["select_prev_sibling"]
-C-k = ["select_next_sibling"]
-Y = ["yank_main_selection_to_primary_clipboard"]
-P = ["replace_selections_with_primary_clipboard"]
+C-k = ["select_prev_sibling"]
+C-j = ["select_next_sibling"]
+C-h = "jump_view_left"
+C-l = "jump_view_right"
+H = "jump_backward"
+L = "jump_forward"
+C-r = "redo"
+p = ":clipboard-paste-after"
+P = ":clipboard-paste-before"
+y = ":clipboard-yank-join"
+Y = ":clipboard-yank"
+R = ":clipboard-paste-replace"
+d = [":clipboard-yank-join", "delete_selection"]
+
+[keys.select]
+p = ":clipboard-paste-after"
+P = ":clipboard-paste-before"
+y = ":clipboard-yank-join"
+Y = ":clipboard-yank"
+R = ":clipboard-paste-replace"
+d = [":clipboard-yank-join", "delete_selection"]
 
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
 select = "underline"
 
+[editor.statusline]
+left = ["mode", "spinner","file-name", "spacer", "version-control"]
+center = []
+right = ["diagnostics", "selections", "position",  "file-type"]
+separator = "│"
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
+
+# [editor.inline-diagnostics]
+# cursor-line = "error"
+# max-wrap = 5
+
 [editor.file-picker]
 hidden = false
 
 [editor.indent-guides]
 render = true
+character = "▏"
+
+[editor.whitespace]
+[editor.whitespace.render]
+space = "none"
+tab = "none"
+nbsp = "all"
+nnbsp = "all"
+newline = "none"
 
 [editor.lsp]
 display-messages = true
 display-inlay-hints = true
+

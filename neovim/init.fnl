@@ -29,6 +29,8 @@
 (set vim.o.tabstop 4)
 (set vim.o.shiftwidth 4)
 (set vim.o.conceallevel 0)
+(set vim.o.laststatus 3)
+(set vim.o.relativenumber true)
 
 ; Enable LSP inlay hints
 (vim.lsp.inlay_hint.enable)
@@ -54,18 +56,24 @@
 
 (vim.api.nvim_command "autocmd DirChanged * lua Rename_tmux_pane()")
 
-(vim.api.nvim_create_autocmd :FileType
-                             {:pattern :gleam
-                              :callback (fn []
-                                          (set vim.opt_local.expandtab true)
-                                          (set vim.opt_local.shiftwidth 2)
-                                          (set vim.opt_local.tabstop 2)
-                                          (set vim.opt_local.softtabstop 2))})
+(local language_opts {[:gleam :typescript :typescriptreact :haskell] {:expandtab true
+                                                                      :shiftwidth 2
+                                                                      :softtabstop 2}
+                      [:go :php :rust] {:expandtab false
+                                        :shiftwidth 4
+                                        :softtabstop 4}})
+
+(each [languages config (pairs language_opts)]
+  (each [_ lang (pairs languages)]
+    (vim.api.nvim_create_autocmd :FileType
+                                 {:pattern lang
+                                  :callback (fn []
+                                              (each [opt val (pairs config)]
+                                                (tset vim.opt_local opt val)))})))
 
 (local lazy (require :lazy))
 (lazy.setup [{:import :plugins}
              {:import :plugins.themes}
              {:import :ftplugins}
-             [:tpope/vim-sensible
-              :udayvir-singh/hibiscus.nvim
-              :udayvir-singh/tangerine.nvim]])
+             {1 :tpope/vim-sensible :lazy true :event :VeryLazy}
+             [:whmountains/tangerine.nvim]])

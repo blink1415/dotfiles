@@ -1,1 +1,4 @@
-{1 :tanvirtin/vgit.nvim :event :BufEnter :opts {}}
+{1 :tanvirtin/vgit.nvim
+ :lazy true
+ :event :VeryLazy
+ :opts {:settings {:live_blame {:enabled true}}}}

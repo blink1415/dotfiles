@@ -1,6 +1,6 @@
 [{1 :rebelot/kanagawa.nvim
   :lazy false
-  :enabled true
+  :enabled false
   :priority 1000
   :init (lambda [] (_G.vim.cmd.colorscheme :kanagawa-lotus))}
  {1 :nyoom-engineering/oxocarbon.nvim
@@ -17,4 +17,14 @@
   :lazy false
   :enabled false
   :priority 1000
-  :init (lambda [] (_G.vim.cmd.colorscheme :catppuccin-latte))}]
+  :init (lambda [] (_G.vim.cmd.colorscheme :catppuccin-latte))}
+ {1 :thesimonho/kanagawa-paper.nvim
+  :lazy false
+  :enabled false
+  :priority 1000
+  :init (lambda [] (_G.vim.cmd.colorscheme :kanagawa-paper-canvas))}
+ {1 :webhooked/kanso.nvim
+  :lazy false
+  :enabled true
+  :priority 1000
+  :init (lambda [] (_G.vim.cmd.colorscheme :kanso-pearl))}]

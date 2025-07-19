@@ -13,12 +13,16 @@
                                :java
                                :fennel
                                :terraform
-                               :haskell]
+                               :haskell
+                               :markdown
+                               :markdown_inline
+                               :plantuml]
             :highlight {:enable true}
             :indent {:enable true}})
 
 {1 :nvim-treesitter/nvim-treesitter
- :dependencies [:nvim-treesitter/nvim-treesitter-textobjects]
+ :dependencies [:nvim-treesitter/nvim-treesitter-textobjects
+                :nvim-treesitter/nvim-treesitter-context]
  :version "*"
  :lazy true
  :event [:BufReadPost :BufNewFile]

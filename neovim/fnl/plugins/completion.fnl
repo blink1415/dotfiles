@@ -32,15 +32,15 @@
   :branch :perf
   :dependencies [:hrsh7th/cmp-nvim-lsp :neovim/nvim-lspconfig]
   :event :InsertEnter
-  :enabled true
+  :enabled false
   :config (lambda []
             (local cmp (require :cmp))
             (cmp.setup (cmp_config cmp)))}
- {; Still too early in development
-  1 :saghen/blink.cmp
+ {1 :saghen/blink.cmp
   :version "*"
-  :enabled false
+  :event :InsertEnter
   :opts {:keymap {:preset :enter
                   :<C-j> [:select_next :fallback]
                   :<C-k> [:select_prev :fallback]
-                  :<C-d> [:show_documentation :fallback]}}}]
+                  :<C-d> [:show_documentation :fallback]}
+         :completion {:documentation {:auto_show true :auto_show_delay_ms 0}}}}]

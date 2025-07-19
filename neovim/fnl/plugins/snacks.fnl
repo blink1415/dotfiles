@@ -6,9 +6,7 @@
         :image {}
         :picker {}
         :input {}
-        :notifier {}
         :explorer {}
-        :scroll {}
         :gitbrowse {}}
  :keys [{1 :<leader>lw
          2 (lambda []
@@ -38,7 +36,4 @@
          :desc "Search icons"}
         {1 :<leader>ss
          2 (lambda [] (_G.Snacks.picker.git_status))
-         :desc "Find in git status"}
-        {1 :<leader>sh
-         2 (lambda [] (_G.Snacks.notifier.show_history))
          :desc "Find in git status"}]}

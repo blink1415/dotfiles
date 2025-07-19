@@ -1,1 +1,1 @@
-{1 :Saecki/crates.nvim :tag :stable :event "BufRead Cargo.toml" :opts {}}
+{1 :mrcjkb/rustaceanvim :version :^5 :lazy false}

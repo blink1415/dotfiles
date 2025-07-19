@@ -1,0 +1,154 @@
+# Kansō Pearl
+# Author: webhooked
+# Light theme for daytime productivity.
+
+## User interface
+"ui.selection" = { bg = "pearlBlue2" }
+"ui.selection.primary" = { bg = "pearlBlue2" }
+"ui.background" = { fg = "pearlInk0", bg = "pearlWhite0" }
+
+"ui.linenr" = { fg = "pearlGray4" }
+"ui.linenr.selected" = { fg = "inkBlack2", modifiers = ["bold"] }
+"ui.gutter" = { fg = "pearlGray4", bg = "pearlWhite0" }
+
+"ui.virtual" = "pearlViolet2"
+"ui.virtual.ruler" = { bg = "pearlWhite1" }
+"ui.virtual.inlay-hint" = "pearlViolet2"
+"ui.virtual.jump-label" = { fg = "pearlRed", modifiers = ["bold"] }
+
+"ui.statusline" = { fg = "pearlInk0", bg = "pearlWhite0" }
+"ui.statusline.inactive" = { fg = "pearlInk1", bg = "pearlWhite0" }
+"ui.statusline.normal" = { fg = "pearlWhite0", bg = "pearlBlue4", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "pearlWhite0", bg = "pearlGreen", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "pearlWhite0", bg = "pearlViolet4", modifiers = ["bold"] }
+
+"ui.bufferline" = { fg = "pearlInk1", bg = "pearlWhite0" }
+"ui.bufferline.active" = { fg = "pearlInk0", bg = "pearlWhite0" }
+"ui.bufferline.background" = { bg = "pearlWhite0" }
+
+"ui.popup" = { fg = "pearlInk2", bg = "pearlWhite0" }
+"ui.window" = { fg = "pearlWhite2" }
+"ui.help" = { fg = "pearlInk2", bg = "pearlWhite0" }
+"ui.text" = "pearlInk0"
+"ui.text.focus" = { fg = "pearlInk2", bg = "pearlWhite2", modifiers = ["bold"] }
+
+"ui.cursor" = { fg = "pearlWhite0", bg = "inkBlack2" }
+"ui.cursor.primary" = { fg = "pearlWhite0", bg = "inkBlack2" }
+"ui.cursor.match" = { fg = "pearlRed", modifiers = ["bold"] }
+"ui.highlight" = { fg = "pearlInk2", bg = "pearlBlue2" }
+"ui.menu" = { fg = "pearlInk2", bg = "pearlWhite1" }
+"ui.menu.selected" = { fg = "pearlInk2", bg = "pearlWhite2", modifiers = ["bold"] }
+"ui.menu.scroll" = { fg = "pearlInk2", bg = "pearlWhite1" }
+
+"ui.cursorline.primary" = { bg = "pearlWhite1" }
+"ui.cursorcolumn.primary" = { bg = "pearlWhite1" }
+
+"ui.debug.breakpoint" = "pearlTeal2"
+"ui.debug.active" = "pearlRed4"
+
+"diagnostic.error" = { underline = { color = "pearlRed3", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "pearlOrange2", style = "curl" } }
+"diagnostic.info" = { underline = { color = "pearlTeal3", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "pearlAqua2", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+error = "pearlRed3"
+warning = "pearlOrange2"
+info = "pearlTeal3"
+hint = "pearlAqua2"
+
+## Diff
+"diff.plus" = "pearlGreen2"
+"diff.minus" = "pearlRed2"
+"diff.delta" = "pearlYellow3"
+
+## Syntax highlighting
+"attribute" = "pearlYellow2"
+"type" = "pearlAqua"
+"type.builtin" = "pearlBlue4"
+"constructor" = "pearlBlue4"
+"constant" = "pearlOrange"
+"constant.numeric" = "pearlPink"
+"constant.character.escape" = { fg = "pearlYellow2", modifiers = ["bold"] }
+"string" = "pearlGreen"
+"string.regexp" = "pearlYellow2"
+"string.special.url" = "pearlBlue4"
+"string.special.symbol" = "pearlViolet4"
+"comment" = "pearlGray3"
+"variable" = "pearlInk0"
+"variable.builtin" = "pearlRed"
+"variable.parameter" = "pearlBlue5"
+"variable.other.member" = "pearlYellow"
+"label" = "pearlBlue4"
+"punctuation" = "pearlGray3"
+"keyword" = { fg = "pearlViolet4", modifiers = ["italic"] }
+"keyword.control.return" = "pearlRed"
+"keyword.control.exception" = "pearlRed"
+"keyword.directive" = "pearlRed"
+"operator" = "pearlGray3"
+"function" = "pearlBlue4"
+"function.builtin" = "pearlBlue4"
+"function.macro" = "pearlRed"
+"tag" = "pearlAqua"
+"namespace" = "pearlOrange"
+"special" = "pearlRed"
+
+## Markup modifiers
+"markup.heading" = { fg = "pearlGray3", modifiers = ["bold"] }
+"markup.heading.marker" = "pearlGray3"
+"markup.heading.1" = { fg = "pearlYellow", modifiers = ["bold"] }
+"markup.heading.2" = { fg = "pearlBlue4", modifiers = ["bold"] }
+"markup.heading.3" = { fg = "pearlAqua", modifiers = ["bold"] }
+"markup.list" = "pearlPink"
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.text" = { fg = "pearlBlue4" }
+"markup.link.url" = { fg = "pearlBlue4" }
+"markup.link.label" = "pearlOrange"
+"markup.quote" = "pearlViolet4"
+"markup.raw" = "pearlGreen"
+
+[palette]
+pearlInk0 = "#22262D"
+pearlInk1 = "#545464"
+pearlInk2 = "#43436c"
+pearlGray = "#e2e1df"
+pearlGray2 = "#5C6068"
+pearlGray3 = "#6D6D69"
+pearlGray4 = "#9F9F99"
+pearlWhite0 = "#f2f1ef"
+pearlWhite1 = "#e2e1df"
+pearlWhite2 = "#dddddb"
+pearlWhite3 = "#cacac7"
+pearlViolet1 = "#a09cac"
+pearlViolet2 = "#766b90"
+pearlViolet3 = "#c9cbd1"
+pearlViolet4 = "#624c83"
+pearlBlue1 = "#c7d7e0"
+pearlBlue2 = "#b5cbd2"
+pearlBlue3 = "#9fb5c9"
+pearlBlue4 = "#4d699b"
+pearlBlue5 = "#5d57a3"
+pearlGreen = "#6f894e"
+pearlGreen2 = "#6e915f"
+pearlGreen3 = "#b7d0ae"
+pearlPink = "#b35b79"
+pearlOrange = "#cc6d00"
+pearlOrange2 = "#e98a00"
+pearlYellow = "#77713f"
+pearlYellow2 = "#836f4a"
+pearlYellow3 = "#de9800"
+pearlYellow4 = "#f9d791"
+pearlRed = "#c84053"
+pearlRed2 = "#d7474b"
+pearlRed3 = "#e82424"
+pearlRed4 = "#d9a594"
+pearlAqua = "#597b75"
+pearlAqua2 = "#5e857a"
+pearlTeal1 = "#4e8ca2"
+pearlTeal2 = "#6693bf"
+pearlTeal3 = "#5a7785"
+pearlCyan = "#d7e3d8"
+inkBlack2 = "#22262D"

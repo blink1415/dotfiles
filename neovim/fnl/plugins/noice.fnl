@@ -11,5 +11,4 @@
                   :long_message_to_split true
                   :inc_rename true
                   :lsp_doc_border false}
-        :signature {:enabled false}
-        :notify {:enabled false}}}
+        :signature {:enabled false}}}

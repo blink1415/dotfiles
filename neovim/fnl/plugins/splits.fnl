@@ -1,6 +1,6 @@
 {1 :mrjones2014/smart-splits.nvim
  :lazy true
- :event :BufEnter
+ :event :VeryLazy
  :keys [{1 :<C-h>
          2 :<cmd>SmartCursorMoveLeft<cr>
          :mode :n
@@ -18,4 +18,3 @@
          :mode :n
          :desc "Move cursor to a pane to the right"}]
  :opts {:multiplexer_integration :tmux}}
-

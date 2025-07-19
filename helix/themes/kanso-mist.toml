@@ -1,0 +1,151 @@
+# Kansō Mist
+# Author: webhooked
+# Soft & muted dark theme with gentle contrast.
+
+## User interface
+"ui.selection" = { bg = "zenBlue2" }
+"ui.selection.primary" = { bg = "zenBlue2" }
+"ui.background" = { fg = "mistWhite", bg = "mist0" }
+
+"ui.linenr" = { fg = "mistGray2" }
+"ui.linenr.selected" = { fg = "fujiWhite", modifiers = ["bold"] }
+"ui.gutter" = { fg = "mistGray2", bg = "mist0" }
+
+"ui.virtual" = "mistGray3"
+"ui.virtual.ruler" = { bg = "mist2" }
+"ui.virtual.inlay-hint" = "mistGray3"
+"ui.virtual.jump-label" = { fg = "mistRed", modifiers = ["bold"] }
+
+"ui.statusline" = { fg = "mistWhite", bg = "mist0" }
+"ui.statusline.inactive" = { fg = "mistGray", bg = "mist0" }
+"ui.statusline.normal" = { fg = "mist0", bg = "mistBlue2", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "mist0", bg = "mistGreen2", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "mist0", bg = "mistViolet", modifiers = ["bold"] }
+
+"ui.bufferline" = { fg = "mistGray", bg = "mist0" }
+"ui.bufferline.active" = { fg = "mistWhite", bg = "mist0" }
+"ui.bufferline.background" = { bg = "mist0" }
+
+"ui.popup" = { fg = "mistWhite", bg = "mist0" }
+"ui.window" = { fg = "mist2" }
+"ui.help" = { fg = "mistWhite", bg = "mist0" }
+"ui.text" = "mistWhite"
+"ui.text.focus" = { fg = "mistWhite", bg = "zenBlue2", modifiers = ["bold"] }
+
+"ui.cursor" = { fg = "mist0", bg = "fujiWhite" }
+"ui.cursor.primary" = { fg = "mist0", bg = "fujiWhite" }
+"ui.cursor.match" = { fg = "mistRed", modifiers = ["bold"] }
+"ui.highlight" = { fg = "mistWhite", bg = "zenBlue2" }
+"ui.menu" = { fg = "mistWhite", bg = "zenBlue1" }
+"ui.menu.selected" = { fg = "mistWhite", bg = "zenBlue2", modifiers = ["bold"] }
+"ui.menu.scroll" = { fg = "mistWhite", bg = "zenBlue1" }
+
+"ui.cursorline.primary" = { bg = "mist2" }
+"ui.cursorcolumn.primary" = { bg = "mist2" }
+
+"ui.debug.breakpoint" = "springBlue"
+"ui.debug.active" = "winterRed"
+
+"diagnostic.error" = { underline = { color = "samuraiRed", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "roninYellow", style = "curl" } }
+"diagnostic.info" = { underline = { color = "inkBlue", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "zenAqua1", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+error = "samuraiRed"
+warning = "roninYellow"
+info = "inkBlue"
+hint = "zenAqua1"
+
+## Diff
+"diff.plus" = "autumnGreen"
+"diff.minus" = "autumnRed"
+"diff.delta" = "autumnYellow"
+
+## Syntax highlighting
+"attribute" = "mistYellow"
+"type" = "mistAqua"
+"type.builtin" = "mistBlue2"
+"constructor" = "mistBlue2"
+"constant" = "mistOrange"
+"constant.numeric" = "mistPink"
+"constant.character.escape" = { fg = "mistYellow", modifiers = ["bold"] }
+"string" = "mistGreen2"
+"string.regexp" = "mistRed"
+"string.special.url" = "mistBlue2"
+"string.special.symbol" = "mistViolet"
+"comment" = "mistGray2"
+"variable" = "mistWhite"
+"variable.builtin" = "mistRed"
+"variable.parameter" = "mistGray1"
+"variable.other.member" = "carpYellow"
+"label" = "mistBlue2"
+"punctuation" = "mistGray1"
+"keyword" = { fg = "mistViolet", modifiers = ["italic"] }
+"keyword.control.return" = "mistRed"
+"keyword.control.exception" = "mistRed"
+"keyword.directive" = "mistRed"
+"operator" = "mistGray1"
+"function" = "mistBlue2"
+"function.builtin" = "mistBlue2"
+"function.macro" = "mistRed"
+"tag" = "mistAqua"
+"namespace" = "mistOrange"
+"special" = "mistRed"
+
+## Markup modifiers
+"markup.heading" = { fg = "mistGray1", modifiers = ["bold"] }
+"markup.heading.marker" = "mistGray1"
+"markup.heading.1" = { fg = "carpYellow", modifiers = ["bold"] }
+"markup.heading.2" = { fg = "mistBlue2", modifiers = ["bold"] }
+"markup.heading.3" = { fg = "mistAqua", modifiers = ["bold"] }
+"markup.list" = "mistPink"
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.text" = { fg = "mistBlue2" }
+"markup.link.url" = { fg = "mistBlue2" }
+"markup.link.label" = "mistOrange"
+"markup.quote" = "mistViolet"
+"markup.raw" = "mistGreen2"
+
+[palette]
+mist0 = "#22262D"
+mist1 = "#2a2c35"
+mist2 = "#393B44"
+mist3 = "#5C6066"
+mistWhite = "#C5C9C7"
+mistGreen = "#87a987"
+mistGreen2 = "#8a9a7b"
+mistPink = "#a292a3"
+mistOrange = "#b6927b"
+mistOrange2 = "#b98d7b"
+mistGray = "#A4A7A4"
+mistGray1 = "#909398"
+mistGray2 = "#75797f"
+mistGray3 = "#5C6066"
+mistBlue2 = "#8ba4b0"
+mistViolet = "#8992a7"
+mistRed = "#c4746e"
+mistAqua = "#8ea4a2"
+mistAsh = "#5C6066"
+mistTeal = "#949fb5"
+mistYellow = "#c4b28a"
+zenBlue1 = "#223249"
+zenBlue2 = "#2D4F67"
+winterGreen = "#2B3328"
+winterYellow = "#49443C"
+winterRed = "#43242B"
+winterBlue = "#252535"
+autumnGreen = "#76946A"
+autumnRed = "#C34043"
+autumnYellow = "#DCA561"
+samuraiRed = "#C34043"
+roninYellow = "#DCA561"
+zenAqua1 = "#6A9589"
+inkBlue = "#658594"
+fujiWhite = "#f2f1ef"
+springBlue = "#7FB4CA"
+carpYellow = "#E6C384"
+katanaGray = "#717C7C"

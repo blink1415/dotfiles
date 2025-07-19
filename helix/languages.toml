@@ -1,3 +1,48 @@
+[language-server.gopls.config]
+gofumpt = true
+staticcheck = true
+local = "go.axofinance.io"
+hints.assignVariableTypes = true
+hints.compositeLiteralFields = true
+hints.constantValues = true
+hints.functionTypeParameters = true
+hints.parameterNames = true
+hints.rangeVariableTypes = true
+
 [[language]]
 name = "php"
 auto-format = false
+
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "nu", args = [ "-c", "golines -m 140 | goimports-reviser -company-prefixes go.axofinance.io - | gofumpt"] }
+
+[[language]]
+name = "fsharp"
+formatter = { command = "fantomas"}
+indent = { tab-width = 4, unit = " " }
+
+[[language]]
+name = "nu"
+indent = { tab-width = 2, unit = " " }
+
+
+[[language]]
+name = "scheme"
+indent = { tab-width = 2, unit = " " }
+file-types = ["scm"]
+scope = "source.steel"
+language-servers = ["steel-language-server"]
+
+
+[language-server.steel-language-server]
+command = "steel-language-server"
+
+# Snapshot files from go-snaps
+[[language]]
+name = "log"
+file-types = [{glob = "*.snap"}]
+auto-format = false
+
+
