@@ -7,7 +7,7 @@
 
 [{1 :akinsho/toggleterm.nvim
   :lazy true
-  :enabled true
+  :enabled false
   :keys [{1 :<c-o> 2 :<cmd>ToggleTerm<cr> :desc "Toggle term"}]
   :config (lambda []
             ((. (require :toggleterm) :setup) opt))}

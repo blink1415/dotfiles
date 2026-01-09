@@ -1,13 +1,13 @@
 theme = "kanso-pearl"
 
 [editor]
-line-number = "relative"
+line-number = "absolute"
 bufferline = "never"
 cursorline = true
 color-modes = true
 popup-border = "all"
 completion-timeout = 5
-rulers = [140]
+rulers = [160]
 # end-of-line-diagnostics = "warning"
 
 [editor.inline-blame]
@@ -22,7 +22,6 @@ C-h = "jump_view_left"
 C-l = "jump_view_right"
 H = "jump_backward"
 L = "jump_forward"
-C-r = "redo"
 p = ":clipboard-paste-after"
 P = ":clipboard-paste-before"
 y = ":clipboard-yank-join"
@@ -47,7 +46,6 @@ select = "underline"
 left = ["mode", "spinner","file-name", "spacer", "version-control"]
 center = []
 right = ["diagnostics", "selections", "position",  "file-type"]
-separator = "│"
 mode.normal = "N"
 mode.insert = "I"
 mode.select = "S"
@@ -61,7 +59,8 @@ hidden = false
 
 [editor.indent-guides]
 render = true
-character = "▏"
+character = "┊"
+skip-levels = 1
 
 [editor.whitespace]
 [editor.whitespace.render]

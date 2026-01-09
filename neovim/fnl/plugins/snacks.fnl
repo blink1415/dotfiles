@@ -17,7 +17,7 @@
         {1 :<leader>f
          2 (lambda [] (_G.Snacks.picker.files))
          :desc "Find files"}
-        {1 :<leader>g 2 (lambda [] (_G.Snacks.picker.grep)) :desc :Grep}
+        {1 :<leader>/ 2 (lambda [] (_G.Snacks.picker.grep)) :desc :Grep}
         {1 :<leader>p
          2 (lambda []
              (_G.Snacks.picker.projects {:win {:minimal false}}))

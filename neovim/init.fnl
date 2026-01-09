@@ -47,6 +47,10 @@
 (map :n :<S-l> :<C-i> {:noremap true :silent true})
 (map :n :<leader>w :viw {:noremap true :silent true})
 
+; Helix-like bindings
+(map :n :x :V {:desc "Select line"})
+(map :n :<space>k vim.lsp.buf.hover {:desc "LSP hover"})
+
 (vim.cmd "set clipboard+=unnamedplus")
 
 (set _G.Rename_tmux_pane

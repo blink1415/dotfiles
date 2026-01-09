@@ -1,7 +1,10 @@
+# font-family = "Hasklug Nerd Font Mono"
 font-family = "Maple Mono NF"
 macos-titlebar-style = hidden
 theme = kanso-pearl
 minimum-contrast = 1.1
 window-padding-balance = true
 command="/opt/homebrew/bin//nu"
+custom-shader=./shaders/cursor_smear_fade.glsl
 
+keybind = shift+enter=text:\x1b\r

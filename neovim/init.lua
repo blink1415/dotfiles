@@ -25,7 +25,6 @@ local function bootstrap(url, ref)
 	vim.opt.runtimepath:prepend(path)
 end
 
-bootstrap("https://github.com/udayvir-singh/hibiscus.nvim", "v1.7")
 bootstrap("https://github.com/whmountains/tangerine.nvim")
 
 require("tangerine").setup({

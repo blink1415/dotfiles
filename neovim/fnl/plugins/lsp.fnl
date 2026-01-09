@@ -13,7 +13,7 @@
          (map :n :<leader>lj "<cmd>lua vim.diagnostic.goto_next()<cr>")))
 
 {1 :neovim/nvim-lspconfig
- :event :BufEnter
+ :event [:BufReadPre :BufNewFile]
  :dependencies [{1 :mason-org/mason.nvim
                  :build (lambda []
                           (pcall _G.vim.cmd :MasonUpdate))}
@@ -25,7 +25,6 @@
                 :mason-org/mason-lspconfig.nvim
                 :nvim-telescope/telescope.nvim
                 ; Completion
-                :L3MON4D3/LuaSnip
                 :onsails/lspkind.nvim]
  :config (lambda []
            (lsp_keymaps)
