@@ -9,6 +9,7 @@ popup-border = "all"
 completion-timeout = 5
 rulers = [160]
 # end-of-line-diagnostics = "warning"
+soft-wrap.enable = true
 
 [editor.inline-blame]
 show = "cursor-line"

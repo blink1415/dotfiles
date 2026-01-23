@@ -41,7 +41,6 @@
            (lspconfig.vacuum.setup {}) ; (lspconfig.kulala-ls.setup {})
            (lspconfig.gopls.setup {:settings {:gopls {:gofumpt true
                                                       :staticcheck true
-                                                      :local :go.axofinance.io
                                                       :hints {:assignVariableTypes true
                                                               :compositeLiteralFields true
                                                               :compositeLiteralTypes true

@@ -1,7 +1,6 @@
 [language-server.gopls.config]
 gofumpt = true
 staticcheck = true
-local = "go.axofinance.io"
 hints.assignVariableTypes = true
 hints.compositeLiteralFields = true
 hints.constantValues = true
@@ -16,7 +15,7 @@ auto-format = false
 [[language]]
 name = "go"
 auto-format = true
-formatter = { command = "nu", args = [ "-c", "golines -m 140 | goimports-reviser -company-prefixes go.axofinance.io - | gofumpt"] }
+formatter = { command = "nu", args = [ "-c", "golines -m 160 | goimports-reviser -company-prefixes ($env.GO_COMPANY_PREFIXES) - | gofumpt"] }
 
 [[language]]
 name = "fsharp"
@@ -46,3 +45,7 @@ file-types = [{glob = "*.snap"}]
 auto-format = false
 
 
+[[language]]
+name = "nu"
+auto-format = true
+formatter = { command = "topiary", args = ["format", "--language", "nu"] }
