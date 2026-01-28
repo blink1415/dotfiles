@@ -130,10 +130,6 @@ def mr_url [] {
 }
 
 
-def mr [] {
-  op (mr_url)
-}
-
 def repo [
   path?: string  # Optional path to a git repository
 ] {

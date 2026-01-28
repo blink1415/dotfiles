@@ -1,4 +1,4 @@
-theme = "kanso-pearl"
+theme = "kanagawa-lotus"
 
 [editor]
 line-number = "absolute"
@@ -29,6 +29,9 @@ y = ":clipboard-yank-join"
 Y = ":clipboard-yank"
 R = ":clipboard-paste-replace"
 d = [":clipboard-yank-join", "delete_selection"]
+
+[keys.normal.space]
+W = ":echo %sh{echo '%{buffer_name}:%{cursor_line} \n%{selection}' | pbcopy}"
 
 [keys.select]
 p = ":clipboard-paste-after"

@@ -315,6 +315,124 @@ themes {
             player_10 0
         }
     }
+    kanagawa-lotus {
+        text_unselected {
+            base 84 84 100
+            background 242 236 188
+            emphasis_0 204 109 0
+            emphasis_1 89 123 117
+            emphasis_2 111 137 78
+            emphasis_3 179 91 121
+        }
+        text_selected {
+            base 84 84 100
+            background 242 236 188
+            emphasis_0 204 109 0
+            emphasis_1 89 123 117
+            emphasis_2 111 137 78
+            emphasis_3 179 91 121
+        }
+        ribbon_selected {
+            base 242 236 188
+            background 77 105 155
+            emphasis_0 200 64 83
+            emphasis_1 204 109 0
+            emphasis_2 179 91 121
+            emphasis_3 111 137 78
+        }
+        ribbon_unselected {
+            base 84 84 100
+            background 242 236 188
+            emphasis_0 242 236 188
+            emphasis_1 242 236 188
+            emphasis_2 242 236 188
+            emphasis_3 242 236 188
+        }
+        table_title {
+            base 77 105 155
+            background 0
+            emphasis_0 204 109 0
+            emphasis_1 89 123 117
+            emphasis_2 111 137 78
+            emphasis_3 179 91 121
+        }
+        table_cell_selected {
+            base 84 84 100
+            background 242 236 188
+            emphasis_0 204 109 0
+            emphasis_1 89 123 117
+            emphasis_2 111 137 78
+            emphasis_3 179 91 121
+        }
+        table_cell_unselected {
+            base 84 84 100
+            background 242 236 188
+            emphasis_0 204 109 0
+            emphasis_1 89 123 117
+            emphasis_2 111 137 78
+            emphasis_3 179 91 121
+        }
+        list_selected {
+            base 84 84 100
+            background 242 236 188
+            emphasis_0 204 109 0
+            emphasis_1 89 123 117
+            emphasis_2 111 137 78
+            emphasis_3 179 91 121
+        }
+        list_unselected {
+            base 84 84 100
+            background 242 236 188
+            emphasis_0 204 109 0
+            emphasis_1 89 123 117
+            emphasis_2 111 137 78
+            emphasis_3 179 91 121
+        }
+        frame_selected {
+            base 77 105 155
+            background 0
+            emphasis_0 204 109 0
+            emphasis_1 89 123 117
+            emphasis_2 111 137 78
+            emphasis_3 179 91 121
+        }
+        frame_highlight {
+            base 204 109 0
+            background 0
+            emphasis_0 204 109 0
+            emphasis_1 204 109 0
+            emphasis_2 204 109 0
+            emphasis_3 204 109 0
+        }
+        exit_code_success {
+            base 111 137 78
+            background 0
+            emphasis_0 89 123 117
+            emphasis_1 242 236 188
+            emphasis_2 179 91 121
+            emphasis_3 77 105 155
+        }
+        exit_code_error {
+            base 232 36 36
+            background 0
+            emphasis_0 119 113 63
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }
+        multiplayer_user_colors {
+            player_1 179 91 121
+            player_2 77 105 155
+            player_3 89 123 117
+            player_4 119 113 63
+            player_5 98 76 131
+            player_6 78 140 162
+            player_7 200 64 83
+            player_8 204 109 0
+            player_9 111 137 78
+            player_10 118 107 144
+        }
+    }
 }
 
 // Plugin aliases - can be used to change the implementation of Zellij
@@ -363,7 +481,7 @@ simplified_ui true
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "kanso-pearl"
+theme "kanagawa-lotus"
  
 // Choose the base input mode of zellij.
 // Default: normal
