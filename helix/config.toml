@@ -2,14 +2,14 @@ theme = "kanagawa-lotus"
 
 [editor]
 line-number = "absolute"
-bufferline = "never"
 cursorline = true
 color-modes = true
 popup-border = "all"
 completion-timeout = 5
-rulers = [160]
-# end-of-line-diagnostics = "warning"
+# rulers = [160]
+end-of-line-diagnostics = "hint"
 soft-wrap.enable = true
+gutters = ["diff"]
 
 [editor.inline-blame]
 show = "cursor-line"
@@ -56,6 +56,7 @@ mode.select = "S"
 
 # [editor.inline-diagnostics]
 # cursor-line = "error"
+# other-lines = "error"
 # max-wrap = 5
 
 [editor.file-picker]

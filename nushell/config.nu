@@ -83,7 +83,7 @@ $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
 alias gti = git
 alias gb = git checkout -b
 alias gs = git status
-alias gd = git diff
+alias gd = pager --cmd "git diff" --split-on "\n\n"
 alias fzf = sk
 alias z = cd (gitlist | fzf)
 

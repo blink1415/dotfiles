@@ -9,15 +9,15 @@
 
 "ui.linenr" = { fg = "lotusGray3" }
 "ui.linenr.selected" = { fg = "lotusInk2", modifiers = ["bold"] }
-"ui.gutter" = { fg = "lotusGray3", bg = "lotusWhite4" }
+"ui.gutter" = { fg = "lotusGray3", bg = "lotusWhite3" }
 
 "ui.virtual" = "lotusGray3"
 "ui.virtual.ruler" = { bg = "lotusWhite2" }
 "ui.virtual.inlay-hint" = "lotusGray3"
 "ui.virtual.jump-label" = { fg = "lotusRed3", modifiers = ["bold"] }
 
-"ui.statusline" = { fg = "lotusInk1", bg = "lotusWhite1" }
-"ui.statusline.inactive" = { fg = "lotusGray2", bg = "lotusWhite1" }
+"ui.statusline" = { fg = "lotusInk1", bg = "lotusWhite3" }
+"ui.statusline.inactive" = { fg = "lotusGray2", bg = "lotusWhite3" }
 "ui.statusline.normal" = { fg = "lotusWhite3", bg = "lotusBlue4", modifiers = ["bold"] }
 "ui.statusline.insert" = { fg = "lotusWhite3", bg = "lotusGreen", modifiers = ["bold"] }
 "ui.statusline.select" = { fg = "lotusWhite3", bg = "lotusViolet4", modifiers = ["bold"] }

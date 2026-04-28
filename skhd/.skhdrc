@@ -1,18 +1,19 @@
 #  NOTE(koekeishiya): A list of all built-in modifier and literal keywords can
 #                     be found at https://github.com/koekeishiya/skhd/issues/1
 #
-alt + shift - space : /usr/bin/open -a /applications/Raycast.app
+# alt + shift - space : /usr/bin/open -a /applications/Raycast.app
 alt + shift - a : /usr/bin/open -a "Ghostty"
-alt + shift - q : /usr/bin/open -a "Visual Studio Code"
-alt + shift - z : /usr/bin/open -a "Bruno"
+# alt + shift - q : /usr/bin/open -a "Visual Studio Code"
+# alt + shift - z : /usr/bin/open -a "Bruno"
 
-alt + shift - w : /usr/bin/open -a "Bitwarden"
+# alt + shift - w : /usr/bin/open -a "Bitwarden"
 alt + shift - s : /usr/bin/open -a "Zen"
 
-alt + shift - e : /usr/bin/open -a "Finder"
+# alt + shift - e : /usr/bin/open -a "Finder"
 alt + shift - d : /usr/bin/open -a "Microsoft Teams"
 
 alt + shift - f : /usr/bin/open -a "Microsoft Outlook.app"
 
 alt + shift - g : /usr/bin/open -a "Datagrip"
 
+# alt + shift - r : managed by ghostty global keybind (quick terminal)
