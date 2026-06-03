@@ -32,6 +32,7 @@ d = [":clipboard-yank-join", "delete_selection"]
 
 [keys.normal.space]
 W = ":echo %sh{echo '%{buffer_name}:%{cursor_line} \n%{selection}' | pbcopy}"
+O = ":sh ~/.config/dotfiles/helix/scripts/open-in-remote.sh '%{buffer_name}' '%{cursor_line}'"
 
 [keys.select]
 p = ":clipboard-paste-after"
