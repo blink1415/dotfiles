@@ -1,7 +1,9 @@
 {1 :folke/noice.nvim
  :dependencies [:MunifTanjim/nui.nvim]
  :lazy false
- :keys [{1 :<leader>ns 2 "<cmd>Noice telescope<cr>" :desc "Search message log"}
+ :keys [{1 :<leader>ns
+         2 (lambda [] (_G.Snacks.picker.noice))
+         :desc "Search message log"}
         {1 :<leader>nv 2 :<cmd>Noice<cr> :desc "View message log"}]
  :opts {:lsp {:override {:vim.lsp.util.convert_input_to_markdown_lines true
                          :vim.lsp.util.stylize_markdown true

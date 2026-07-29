@@ -80,6 +80,45 @@ $env.config.show_banner = false
 $env.config.edit_mode = 'vi'
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
 
+# nvm (Homebrew). nvm.sh is a bash script, so it can't be sourced in nushell.
+# Instead: set NVM_DIR, put the default node on PATH natively, route nvm
+# subcommands through bash, and switch the active version in-session with use-node.
+$env.NVM_DIR = ($env.HOME | path join ".nvm")
+
+# Activate the default node version at startup (native, no bash spawn).
+let nvm_versions = ($env.NVM_DIR | path join "versions/node")
+if ($nvm_versions | path exists) {
+    let installed = (ls $nvm_versions | get name | path basename | sort)
+    if ($installed | is-not-empty) {
+        let default_alias = ($env.NVM_DIR | path join "alias/default")
+        let target = if ($default_alias | path exists) { open $default_alias | str trim } else { "" }
+        let picked = (
+            $installed
+            | where {|v| $v == $target or $v == $"v($target)" or ($v | str starts-with $"v($target)")}
+            | append ($installed | last)  # fallback: latest installed
+            | first
+        )
+        $env.PATH = ($env.PATH | prepend ($nvm_versions | path join $picked "bin"))
+    }
+}
+
+# Run any nvm subcommand by sourcing nvm.sh inside bash (install, ls, alias, ...).
+def --wrapped nvm [...args] {
+    ^bash -c 'source /opt/homebrew/opt/nvm/nvm.sh >/dev/null 2>&1; nvm "$@"' -- ...$args
+}
+
+# Switch the active node version in the current nu session (like `nvm use`).
+def --env use-node [version: string = "default"] {
+    let node_bin = (^bash -c 'source /opt/homebrew/opt/nvm/nvm.sh >/dev/null 2>&1; nvm which "$1"' -- $version | complete)
+    if $node_bin.exit_code != 0 {
+        print $"nvm: version '($version)' not found — install it with `nvm install ($version)`"
+        return
+    }
+    let bin = ($node_bin.stdout | str trim | path dirname)
+    let versions_root = ($env.NVM_DIR | path join "versions/node")
+    $env.PATH = ($env.PATH | where {|p| not ($p | str starts-with $versions_root)} | prepend $bin)
+}
+
 alias gti = git
 alias gb = git checkout -b
 alias gs = git status
