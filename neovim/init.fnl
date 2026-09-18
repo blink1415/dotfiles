@@ -48,10 +48,13 @@
 (map :n :j "v:count == 0 ? 'gj' : 'j'" {:expr true :silent true})
 (map :n :<leader>1 vim.diagnostic.goto_prev {:desc "Go to previous diagnostic"})
 (map :n :<leader>2 vim.diagnostic.goto_next {:desc "Go to next diagnostic"})
-(map :n :<leader>w :viw {:noremap true :silent true})
+(map :n :<leader>k vim.diagnostic.open_float {:desc "Float diagnostic"})
+(map :n :<leader>q vim.diagnostic.setloclist {:desc "Open diagnostic list"})
+(map :n :<S-h> :<C-o> {:noremap true :silent true})
+(map :n :<S-l> :<C-i> {:noremap true :silent true})
 
-; Helix keybinds (x select-line, goto/match/space modes, unimpaired, ...)
-; all live in fnl/plugins/helix.fnl
+; Helix-like bindings live in local/helix-keys.nvim (fnl/plugins/helix.fnl)
+(map :n :<space>k vim.lsp.buf.hover {:desc "LSP hover"})
 
 (vim.cmd "set clipboard+=unnamedplus")
 
